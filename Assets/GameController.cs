@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
 	GameObject moneyMakers;
-	GameObject dataController;
+	DataController dataController;
 
 	void Awake(){
 		moneyMakers = GameObject.FindGameObjectWithTag ("MoneyMakers");
-		dataController = GameObject.FindGameObjectWithTag ("DataController");
 	}
 
 	// Use this for initialization
 	void Start () {
+		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
 		setupMoneyMakers ();
 	}
 	
@@ -32,6 +32,17 @@ public class GameController : MonoBehaviour {
 			// Count
 			Text count = moneyMaker.transform.GetChild(0).GetComponent<Text> ();
 			count.text = "0";
+
+			// Load values from Data Controller
+
+			// Upgrade value
+			Text upgradeCost = moneyMaker.transform.GetChild(2).transform.GetChild(0).GetComponent<Text> ();
+			upgradeCost.text = dataController.getMoneyMakerPrice (i).ToString();
+
+			// Production value
+			Text production = moneyMaker.transform.GetChild(3).GetComponent<Text> ();
+			production.text = dataController.getMoneyMakerProduction (i).ToString();
+
 		}
 	}
 }

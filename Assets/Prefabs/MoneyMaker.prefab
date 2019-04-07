@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 222023518559685710}
   - component: {fileID: 114047389115792840}
   m_Layer: 5
-  m_Name: AmountMadePerCycle
+  m_Name: ProductionAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
