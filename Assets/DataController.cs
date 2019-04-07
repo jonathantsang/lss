@@ -10,7 +10,7 @@ public class DataController : MonoBehaviour {
 		public int price; // Ex 10
 		public int production; // Ex 100
 
-		// Scale factors on the next levels (float, round int down for each)
+		// Scale factors on the next levels (float, round int based on mathf)
 		public float priceScale; // 1.1, 10 -> 11
 		public float productionScale; // 1.1 100 -> 110
 
@@ -27,6 +27,9 @@ public class DataController : MonoBehaviour {
 			productionScale = 1.1f;
 		}
 	}
+
+	// Stats
+	int money = 0;
 
 	// Store data on the money makers
 	MoneyMaker[] moneyMakers;
@@ -48,7 +51,7 @@ public class DataController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		money = 1000; // testing
 	}
 	
 	// Update is called once per frame
@@ -58,8 +61,8 @@ public class DataController : MonoBehaviour {
 
 	void initializeMoneyMakers(){
 		moneyMakers [0].level = 0;
-		moneyMakers [0].price = 0;
-		moneyMakers [0].production = 0;
+		moneyMakers [0].price = 1;
+		moneyMakers [0].production = 1;
 		moneyMakers [0].priceScale = 1.1f;
 		moneyMakers [0].productionScale = 1.1f;
 
@@ -94,7 +97,24 @@ public class DataController : MonoBehaviour {
 		moneyMakers [5].productionScale = 1.1f;
 	}
 
-	// Getters
+	// Public Operations on Money
+	public void decreaseMoney(int amount){
+		money -= amount;
+	}
+
+	public void upgradeMoneyMaker(int id){
+		moneyMakers [id].level += 1;
+		moneyMakers [id].price = Mathf.RoundToInt(moneyMakers [id].price * moneyMakers [id].priceScale);
+		moneyMakers [id].production = Mathf.RoundToInt(moneyMakers [id].production * moneyMakers [id].productionScale);
+		// Do not edit scales for now
+	}
+
+
+	// Public Getters
+	public int getTotalMoney(){
+		return money;
+	}
+
 	public int getMoneyMakerLevel(int i){
 		return moneyMakers [i].level;
 	}
