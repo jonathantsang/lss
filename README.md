@@ -1,8 +1,13 @@
 legend store simulator
+3pic store simulator
+
+sept 13 release date
 
 features:
 - clicker
 - level progression
+- int to number scientific notation
+- saves
 - exclusives
 
 money:
@@ -24,14 +29,14 @@ upgrades:
 - none for now
 
 Description:
-- This is a timed exclusive for 6 months on Steam. Then this will be releasing on CD-roms in specially marked boxes of your favourite cereals
+- This is a timed exclusive for 6 months on Steam. Then this will be releasing on CD-roms in specially marked boxes of your favourite cereals. (Not really)
 
 achievements:
 - steam exclusive (let's get this bread)
 - first one is not free (to-play)
 - okay, this is epic ()
 - fort nite (14 something)
-- that is unreal
+- that is unreal ()
 - spatially in tune
 - the bordering lands
 - the sham "Wow, I CAN do this all day."
