@@ -50,5 +50,5 @@ achievements:
 - humble package of goods
 - make it raaaaaaaaaain (first exclusive)
 - infinity (blade) and beyond (5000 exclusives)
-- I don't know what this achievement is (and neither do you)
-- I don't know how to get this achievement (and neither do you?)
+- blades (let's see what esbern has to say)
+- veni vidi vici (patrolling the mojave makes you wish for a nuclear winter)

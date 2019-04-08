@@ -6,16 +6,27 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
 	GameObject moneyMakers;
+	GameObject stats;
 	DataController dataController;
 
+	public static GameController instance = null;
+
 	void Awake(){
+		//Check if instance already exists
+		if (instance == null)
+			instance = this;
+		else if (instance != this)
+			Destroy(gameObject);   
+
 		moneyMakers = GameObject.FindGameObjectWithTag ("MoneyMakers");
+		stats = GameObject.FindGameObjectWithTag ("Stats");
 	}
 
 	// Use this for initialization
 	void Start () {
 		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
 		setupMoneyMakers ();
+		updateUI ();
 	}
 	
 	// Update is called once per frame
@@ -31,9 +42,25 @@ public class GameController : MonoBehaviour {
 	}
 
 	// Public UI updates
+	public void updateUI(int id = 0){
+		// Updates MoneyMaker and Stats
+		updateStatsUI();
+		updateMoneyMakerUI (id);
+	}
+
+	void updateStatsUI(){
+		// Update money count
+		Text money = stats.transform.GetChild(0).GetComponent<Text>();
+		money.text = dataController.getTotalMoney ().ToString ();
+	}
+
 	// takes an id right now, could take nothing and update all
-	public void updateMoneyMakerUI(int id){
+	void updateMoneyMakerUI(int id){
 		GameObject moneyMaker = moneyMakers.transform.GetChild (id).gameObject;
+
+		// Set id at each ClickButton so it knows who it is
+		ClickButton cb = moneyMaker.transform.GetChild(1).GetComponent<ClickButton> ();
+		cb.id = id;
 
 		// Set id at each UpgradeButton so it knows who it is
 		UpgradeButton ub = moneyMaker.transform.GetChild(2).GetComponent<UpgradeButton> ();
@@ -43,7 +70,7 @@ public class GameController : MonoBehaviour {
 
 		// Count
 		Text count = moneyMaker.transform.GetChild(0).GetComponent<Text> ();
-		count.text = "0";
+		count.text = dataController.getMoneyMakerLevel (id).ToString ();
 
 		// Load values from Data Controller
 
@@ -53,7 +80,7 @@ public class GameController : MonoBehaviour {
 
 		// Production value
 		Text production = moneyMaker.transform.GetChild(3).GetComponent<Text> ();
-		production.text = dataController.getMoneyMakerProduction (id).ToString ();
+		production.text = dataController.getMoneyMakerProduction (id).ToString () + " /c";
 	}
 
 	// Buy/Sell

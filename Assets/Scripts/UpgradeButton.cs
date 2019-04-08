@@ -33,11 +33,9 @@ public class UpgradeButton : MonoBehaviour {
 		bool res = gameController.attemptBuy (id);
 		if (res) {
 			// Redraw
-			gameController.updateMoneyMakerUI (id);
+			gameController.updateUI (id);
 		} else {
 			// Do nothing, it failed
 		}
 	}
-
-
 }

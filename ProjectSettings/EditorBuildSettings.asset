@@ -4,4 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 6fe679b85e0dd4892a3e397109d74efb
+  - enabled: 1
+    path: Assets/Scenes/ClickerScreen.unity
+    guid: d779e48dec51e48a09716bd71480a21b
+  - enabled: 1
+    path: Assets/Scenes/UpgradeShop.unity
+    guid: b39a5d40db00547c49e489015863e55b
+  - enabled: 1
+    path: Assets/Scenes/ExclusiveUpgradeShop.unity
+    guid: 74f22282c07a84b9ab355c2f70b40873
