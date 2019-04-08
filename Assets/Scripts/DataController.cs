@@ -34,6 +34,24 @@ public class DataController : MonoBehaviour {
 		}
 	}
 
+	class Upgrade {
+
+		// Name of it, for debugging
+		public string name;
+
+		// Cost of upgrade
+		public int cost;
+
+		// If the upgrade has been bought
+		public int bought;
+
+		public Upgrade(){
+			name = "unamed";
+			cost = 1;
+			bought = 0;
+		}
+	}
+
 	// Singleton
 	public static DataController instance = null;
 
@@ -43,6 +61,9 @@ public class DataController : MonoBehaviour {
 	// Store data on the money makers
 	MoneyMaker[] moneyMakers;
 
+	// Store data on the upgrades
+	Upgrade[] upgrades;
+
 	// Misc stats
 	int[] miscStats;
 
@@ -51,24 +72,49 @@ public class DataController : MonoBehaviour {
 	int exclusivesWorth; // upgraded later
 
 	void Awake(){
+		DontDestroyOnLoad(this.gameObject);
+
 		//Check if instance already exists
 		if (instance == null)
 			instance = this;
-		else if (instance != this)
-			Destroy(gameObject);
-
-		moneyMakers = new MoneyMaker[6];
-		// Init each item
-		for(int i = 0; i < moneyMakers.Length; i++){
-			moneyMakers [i] = new MoneyMaker ();
+		else if (instance != this) {
+			// Check which has FRESHER data
+			// race in checking who is the singleton, but only one CORRECT singleton
+			// For now, use the fact if it is not already instantiated fields
+			if (moneyMakers == null || upgrades == null) {
+				Destroy(gameObject);
+			}
 		}
 
-		// initialize the money makers
-		initializeMoneyMakers();
+		// This is called every time
+		if (moneyMakers == null) {
+			moneyMakers = new MoneyMaker[6];
+			// Init each item
+			for(int i = 0; i < moneyMakers.Length; i++){
+				moneyMakers [i] = new MoneyMaker ();
+			}
 
-		// Misc stats/achievements
-		// 0 total clicks
-		miscStats = new int[10];
+			// Initialize the money makers
+			initializeMoneyMakers ();
+		}
+
+		if (upgrades == null) {
+			upgrades = new Upgrade[6];
+			// Init each item
+			for(int i = 0; i < upgrades.Length; i++){
+				upgrades [i] = new Upgrade ();
+			}
+
+			// initialize the upgrades
+			initializeUpgrades ();
+		}
+
+
+		if (miscStats == null) {
+			// Misc stats/achievements
+			// 0 total clicks
+			miscStats = new int[10];
+		}
 	}
 
 	// Use this for initialization
@@ -82,6 +128,7 @@ public class DataController : MonoBehaviour {
 	}
 
 	void initializeMoneyMakers(){
+		// this is called at each scene change, load from dataController values instead
 		moneyMakers [0].level = 0;
 		moneyMakers [0].price = 1;
 		moneyMakers [0].production = 1;
@@ -129,6 +176,11 @@ public class DataController : MonoBehaviour {
 		moneyMakers [5].productionScale = 1.1f;
 		moneyMakers [5].waitTime = 5;
 		moneyMakers [5].mutex = false;
+	}
+
+	void initializeUpgrades(){
+		upgrades[0].name = "Cash infusion";
+		upgrades[0].cost = 10000;
 	}
 
 	// Public Operations on Money

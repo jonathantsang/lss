@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class UpgradeButton : MonoBehaviour {
 
 	// Used to call in the DataController, set by the GameController
-	public int id; // 0-5 value
+	public int id; // 0-5 value for clickers
+				   // 6-11 value for upgrades in the shop
 
 	// Self button
 	Button btn;

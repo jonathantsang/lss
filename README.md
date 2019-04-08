@@ -40,15 +40,19 @@ achievements:
 - that is unreal ()
 - spatially in tune
 - the bordering lands
-- the sham "Wow, I CAN do this all day."
+- the sham (Wow, I CAN do this all day. I too was hustled, scammed, bamboozled, hood winked, and lead astray.)
 - mayhem x 3
 - remastered reloaded relaunched
-- the origins
-- you play
-- but this isn't monkey island
+- the origins (Where titans fall)
+- you play ()
+- monkey island
 - mexodus (a grand departure indeed)
 - humble package of goods
 - make it raaaaaaaaaain (first exclusive)
 - infinity (blade) and beyond (5000 exclusives)
 - blades (let's see what esbern has to say)
-- veni vidi vici (patrolling the mojave makes you wish for a nuclear winter)
+- falling out (patrolling the mojave makes you wish for a nuclear winter)
+- flux capacitor (88 mph)
+- give me deus ex
+- for the record
+- burger town

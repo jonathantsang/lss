@@ -3,17 +3,20 @@ Plan.txt
 April 5:
 - gamecontroller
 
-April 8:
+April 7:
 - main menu
 - basic functionality
 - stats page
+
+April 8:
+- upgrades page
+- saves
 
 
 
 todo:
 - upgrades
-- interns (auto run)
 - saves
-- stats
+- interns (auto run)
 - art
 - steamworks

@@ -21,18 +21,18 @@ public class GameController : MonoBehaviour {
 			Destroy(gameObject);   
 
 		moneyMakers = GameObject.FindGameObjectWithTag ("MoneyMakers");
-		stats = GameObject.FindGameObjectWithTag ("Stats");
-	}
-
-	// Use this for initialization
-	void Start () {
-		print ("start gc");
 		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
+
 		// Only on game page
 		if (SceneManager.GetActiveScene().name == "ClickerScreen") {
 			setupMoneyMakers ();
 			updateUI ();
 		}
+	}
+
+	// Use this for initialization
+	void Start () {
+		print ("start gc");
 	}
 	
 	// Update is called once per frame
@@ -43,7 +43,6 @@ public class GameController : MonoBehaviour {
 	void setupMoneyMakers(){
 		for (int i = 0; i < moneyMakers.transform.childCount; i++) {
 			updateMoneyMakerUI (i);
-
 		}
 	}
 
@@ -56,8 +55,9 @@ public class GameController : MonoBehaviour {
 
 	void updateStatsUI(){
 		// Update money count
+		stats = GameObject.FindGameObjectWithTag ("Stats"); // stats is reused in stats page and clicker page, so have to relink
 		Text money = stats.transform.GetChild(0).GetComponent<Text>();
-		money.text = dataController.getTotalMoney ().ToString ();
+		money.text = "$" + dataController.getTotalMoney ().ToString ();
 	}
 
 	// takes an id right now, could take nothing and update all
@@ -91,14 +91,21 @@ public class GameController : MonoBehaviour {
 
 	// Buy/Sell
 	public bool attemptBuy(int id){
-		if (dataController.getMoneyMakerPrice (id) > dataController.getTotalMoney ()) {
-			// Invalid
-			return false;
-		} else {
-			// Valid buy
-			dataController.decreaseMoney (dataController.getMoneyMakerPrice (id));
-			dataController.upgradeMoneyMaker (id);
-			return true;
+		if (id <= 5) {
+			// money maker click upgrade
+			if (dataController.getMoneyMakerPrice (id) > dataController.getTotalMoney ()) {
+				// Invalid
+				return false;
+			} else {
+				// Valid buy
+				dataController.decreaseMoney (dataController.getMoneyMakerPrice (id));
+				dataController.upgradeMoneyMaker (id);
+				return true;
+			}
+		} else if (id <= 11) {
+			// Upgrade
+
 		}
+		return false;
 	}
 }
