@@ -32,14 +32,15 @@ public class ClickButton : MonoBehaviour {
 	}
 
 	void addMoney(){
-		print ("addMoney");
+		// print ("addMoney");
 		// Need a lock mechanism so only one coroutine can be running at a time
 		// If it is already in use, we throw it out, (DO NOT spin)
 		if (dataController.getMoneyMakerMutex (id) == false) {
 			dataController.setMoneyMakerMutex (id, true);
+			dataController.increaseTotalClicks (); // +1
 			StartCoroutine (addDelayedMoney ());
 		} else {
-			print ("mutex needed");
+			// print ("mutex needed");
 		}
 
 	}
@@ -48,7 +49,7 @@ public class ClickButton : MonoBehaviour {
 		int waitTime = dataController.getMoneyMakerWaitTime (id);
 		yield return new WaitForSeconds(waitTime);
 		dataController.increaseMoney (dataController.getMoneyMakerProduction (id));
-		print ("added delayed money");
+		// print ("added delayed money");
 		gameController.updateUI ();
 		dataController.setMoneyMakerMutex (id, false);
 	}

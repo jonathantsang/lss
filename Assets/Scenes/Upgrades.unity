@@ -213,7 +213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -125}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &41131732
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 146482300}
   m_Layer: 0
   m_Name: DataController
-  m_TagString: Untagged
+  m_TagString: DataController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -823,21 +823,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224166785960342060, guid: 4bc93bd25937c491ca97f7adbcfdb2d9,
-        type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.00032
-      objectReference: {fileID: 0}
-    - target: {fileID: 224166785960342060, guid: 4bc93bd25937c491ca97f7adbcfdb2d9,
-        type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.00032
-      objectReference: {fileID: 0}
-    - target: {fileID: 224166785960342060, guid: 4bc93bd25937c491ca97f7adbcfdb2d9,
-        type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.00032
-      objectReference: {fileID: 0}
     - target: {fileID: 1236804884699426, guid: 4bc93bd25937c491ca97f7adbcfdb2d9, type: 2}
       propertyPath: m_Name
       value: MoneyMaker (1)
@@ -886,8 +871,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -500, y: 400}
-  m_SizeDelta: {x: 925, y: 700}
+  m_AnchoredPosition: {x: -500, y: 350}
+  m_SizeDelta: {x: 925, y: 675}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &800235512
 Prefab:
@@ -1502,7 +1487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -450, y: -80}
+  m_AnchoredPosition: {x: -450, y: -50}
   m_SizeDelta: {x: 900, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1722602886
@@ -1594,7 +1579,7 @@ GameObject:
   - component: {fileID: 1846191364}
   m_Layer: 5
   m_Name: Stats
-  m_TagString: Untagged
+  m_TagString: Stats
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1652,7 +1637,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 300, y: 900}
+  m_SizeDelta: {x: 300, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &2071834889 stripped
 RectTransform:

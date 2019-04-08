@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class GameController : MonoBehaviour {
 	public static GameController instance = null;
 
 	void Awake(){
+		print ("awake gc");
 		//Check if instance already exists
 		if (instance == null)
 			instance = this;
@@ -24,9 +26,13 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		print ("start gc");
 		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
-		setupMoneyMakers ();
-		updateUI ();
+		// Only on game page
+		if (SceneManager.GetActiveScene().name == "ClickerScreen") {
+			setupMoneyMakers ();
+			updateUI ();
+		}
 	}
 	
 	// Update is called once per frame

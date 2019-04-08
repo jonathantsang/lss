@@ -5,6 +5,7 @@ April 5:
 
 April 8:
 - main menu
+- basic functionality
 - stats page
 
 

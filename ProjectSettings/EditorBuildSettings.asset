@@ -12,8 +12,5 @@ EditorBuildSettings:
     path: Assets/Scenes/ClickerScreen.unity
     guid: d779e48dec51e48a09716bd71480a21b
   - enabled: 1
-    path: Assets/Scenes/UpgradeShop.unity
-    guid: b39a5d40db00547c49e489015863e55b
-  - enabled: 1
-    path: Assets/Scenes/ExclusiveUpgradeShop.unity
-    guid: 74f22282c07a84b9ab355c2f70b40873
+    path: Assets/Scenes/Stats.unity
+    guid: d2325b48f0e834ecb86d958eb2da31f2

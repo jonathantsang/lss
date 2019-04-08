@@ -43,6 +43,9 @@ public class DataController : MonoBehaviour {
 	// Store data on the money makers
 	MoneyMaker[] moneyMakers;
 
+	// Misc stats
+	int[] miscStats;
+
 	// Exclusives
 	int exclusives;
 	int exclusivesWorth; // upgraded later
@@ -62,6 +65,10 @@ public class DataController : MonoBehaviour {
 
 		// initialize the money makers
 		initializeMoneyMakers();
+
+		// Misc stats/achievements
+		// 0 total clicks
+		miscStats = new int[10];
 	}
 
 	// Use this for initialization
@@ -142,6 +149,10 @@ public class DataController : MonoBehaviour {
 
 
 	// Public Getters
+	public int getTotalClicks(){
+		return miscStats [0];
+	}
+
 	public int getTotalMoney(){
 		return money;
 	}
@@ -177,5 +188,9 @@ public class DataController : MonoBehaviour {
 	// Public Setters
 	public void setMoneyMakerMutex(int i, bool value){
 		moneyMakers [i].mutex = value;
+	}
+
+	public void increaseTotalClicks(){
+		miscStats [0]++;
 	}
 }
