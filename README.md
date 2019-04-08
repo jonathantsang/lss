@@ -2,6 +2,7 @@ legend store simulator
 3pic store simulator
 
 sept 13 release date
+- disclaimer, all similarities are coincidental
 
 features:
 - clicker

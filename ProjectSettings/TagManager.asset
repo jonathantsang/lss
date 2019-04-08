@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MoneyMakers
   - DataController
+  - Slides
   layers:
   - Default
   - TransparentFX
