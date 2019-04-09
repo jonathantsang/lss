@@ -2,55 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class MoneyMaker {
+	public int level; // ex. 4
+
+	public int price; // ex. 10
+	public int production; // ex. 100
+
+	// Scale factors on the next levels (float, round int based on mathf)
+	public float priceScale; // ex. 1.1, 10 -> 11
+	public float productionScale; // ex. 1.1 100 -> 110
+
+	public int waitTime; // ex. 4 is 4 seconds to wait for the button
+
+	public bool mutex; // ex. true, taken, false, available
+
+	// Might want scales to be bounded to be more dynamic
+	// Levels 0 - 100: scale 1.2, 1.5
+	// Levels 100 - 1000: scale 2.0, 1.2
+	// etc.
+
+	public MoneyMaker(){
+		level = 0;
+		price = 1;
+		production = 1;
+		priceScale = 1.1f;
+		productionScale = 1.1f;
+		waitTime = 5;
+		mutex = false;
+	}
+}
+
+[System.Serializable]
+public class Upgrade {
+
+	// Name of it, for debugging
+	public string name;
+
+	// Cost of upgrade
+	public int cost;
+
+	// If the upgrade has been bought
+	public int bought;
+
+	public Upgrade(){
+		name = "unamed";
+		cost = 1;
+		bought = 0;
+	}
+}
+
 public class DataController : MonoBehaviour {
-
-	class MoneyMaker {
-		public int level; // ex. 4
-
-		public int price; // ex. 10
-		public int production; // ex. 100
-
-		// Scale factors on the next levels (float, round int based on mathf)
-		public float priceScale; // ex. 1.1, 10 -> 11
-		public float productionScale; // ex. 1.1 100 -> 110
-
-		public int waitTime; // ex. 4 is 4 seconds to wait for the button
-
-		public bool mutex; // ex. true, taken, false, available
-
-		// Might want scales to be bounded to be more dynamic
-		// Levels 0 - 100: scale 1.2, 1.5
-		// Levels 100 - 1000: scale 2.0, 1.2
-		// etc.
-
-		public MoneyMaker(){
-			level = 0;
-			price = 1;
-			production = 1;
-			priceScale = 1.1f;
-			productionScale = 1.1f;
-			waitTime = 5;
-			mutex = false;
-		}
-	}
-
-	class Upgrade {
-
-		// Name of it, for debugging
-		public string name;
-
-		// Cost of upgrade
-		public int cost;
-
-		// If the upgrade has been bought
-		public int bought;
-
-		public Upgrade(){
-			name = "unamed";
-			cost = 1;
-			bought = 0;
-		}
-	}
 
 	// Singleton
 	public static DataController instance = null;
@@ -85,7 +87,6 @@ public class DataController : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-		// This is called every time
 		if (moneyMakers == null) {
 			moneyMakers = new MoneyMaker[6];
 			// Init each item
@@ -118,7 +119,7 @@ public class DataController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		money = 1000; // testing
+		// money = 100000;
 	}
 	
 	// Update is called once per frame
@@ -182,6 +183,24 @@ public class DataController : MonoBehaviour {
 		upgrades[0].cost = 10000;
 	}
 
+	// Load/Save
+	public void loadInventory(int m, MoneyMaker[] mms){
+		money = m;
+		// Money Makers Load
+		moneyMakers = new MoneyMaker[6];
+		for (int i = 0; i < mms.Length; i++) {
+			moneyMakers [i] = new MoneyMaker ();
+			// Copy data over
+			moneyMakers[i].level = mms[i].level;
+			moneyMakers[i].price = mms[i].price;
+			moneyMakers[i].production = mms[i].production;
+			moneyMakers[i].priceScale = mms[i].priceScale;
+			moneyMakers[i].productionScale = mms[i].productionScale;
+			moneyMakers[i].waitTime = mms[i].waitTime;
+			moneyMakers[i].mutex = mms[i].mutex;
+		}
+	}
+
 	// Public Operations on Money
 	public void increaseMoney(int amount){
 		money += amount;
@@ -200,6 +219,20 @@ public class DataController : MonoBehaviour {
 
 
 	// Public Getters
+
+	// Full Getters for Save
+	public MoneyMaker[] getMoneyMakers(){
+		return moneyMakers;
+	}
+
+	public Upgrade[] getUpgrade(){
+		return upgrades;
+	}
+
+	public int[] getMiscStats(){
+		return miscStats;
+	}
+
 	public int getTotalClicks(){
 		return miscStats [0];
 	}

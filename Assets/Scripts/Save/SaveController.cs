@@ -6,8 +6,11 @@ public class SaveController : MonoBehaviour {
 
 	public static SaveController instance;
 
+	// Dep
+	DataController dataController;
+
 	float counter = 0;
-	float limit = 0.75f;
+	float limit = 2.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +21,7 @@ public class SaveController : MonoBehaviour {
 			Destroy(gameObject);    
 		DontDestroyOnLoad(gameObject);
 
-		//IC = GameObject.FindGameObjectWithTag ("InventoryController").GetComponent<InventoryController> ();
+		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
 		//SU = GameObject.FindGameObjectWithTag ("ShopUnlocked").GetComponent<ShopUnlocked> ();
 		Load ();
 	}
@@ -52,16 +55,22 @@ public class SaveController : MonoBehaviour {
 			print ("save failed due to linking");
 		}
 		*/
+		if (dataController != null) {
+			print ("saving");
+			SaveLoadManager.SaveData (dataController.getTotalMoney (), dataController.getMoneyMakers ());
+		}
 
 	}
 
 	public void Load(){
+		print ("load");
 		SaveData loadedStats = SaveLoadManager.LoadData ();
 
 		// Load from stats
 		// print(loadedStats.Currency);
 		// print (loadedStats.Collected);
 		// IC.LoadInventory (loadedStats.Collected, loadedStats.RecipesUnlocked, loadedStats.Stats, loadedStats.ShopUnlocked, loadedStats.Currency);
+		dataController.loadInventory(loadedStats.money, loadedStats.moneyMakers);
 
 		// Loads data
 		// print(loadedStats);

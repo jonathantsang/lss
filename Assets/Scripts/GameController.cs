@@ -37,7 +37,8 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		// Safety?, probably update after certain times?
+		updateUI();
 	}
 
 	void setupMoneyMakers(){
@@ -50,7 +51,9 @@ public class GameController : MonoBehaviour {
 	public void updateUI(int id = 0){
 		// Updates MoneyMaker and Stats
 		updateStatsUI();
-		updateMoneyMakerUI (id);
+		for (int i = 0; i < moneyMakers.transform.childCount; i++) {
+			updateMoneyMakerUI (i);
+		}
 	}
 
 	void updateStatsUI(){

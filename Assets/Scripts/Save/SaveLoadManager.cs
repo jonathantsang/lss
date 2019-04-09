@@ -6,11 +6,11 @@ using System.IO;
 
 public static class SaveLoadManager {
 
-	public static void SaveData(Dictionary<int,int> collected, Dictionary<int,int> recipesunlocked, List<int> stats, List<int> shopunlocked, int currency, int numopened, int howmanyperpack){
+	public static void SaveData(int money, MoneyMaker[] mms){
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream stream = new FileStream (Application.persistentDataPath + "/data.sav", FileMode.Create);
 
-		SaveData data = new SaveData (collected, recipesunlocked, stats, shopunlocked, currency, numopened, howmanyperpack);
+		SaveData data = new SaveData (money, mms);
 		bf.Serialize (stream, data);
 		stream.Close ();
 	}
@@ -28,7 +28,7 @@ public static class SaveLoadManager {
 		} else {
 			Debug.Log ("create new");
 			Debug.LogError ("File does not exist");
-			return new global::SaveData (new Dictionary<int, int>() , new Dictionary<int, int>(), new List<int>(), new List<int>(), 0, 0, 0);
+			return new global::SaveData (0, new MoneyMaker[6]);
 		}
 	}
 }
@@ -36,6 +36,10 @@ public static class SaveLoadManager {
 [System.Serializable]
 public class SaveData {
 
+	public int money = 0; // Total money
+
+	public MoneyMaker[] moneyMakers;
+	/*
 	public int NumberOpened = 0; // How many crates opened
 	public int Currency = 10; // How much currency they have
 	public int OpenCount = 1; // How many to open at once
@@ -85,5 +89,10 @@ public class SaveData {
 		//Debug.Log (currency + " is currency");
 		Currency = currency;
 		OpenCount = numperpack;
+	}*/
+
+	public SaveData(int m, MoneyMaker[] mm){
+		money = m;
+		moneyMakers = mm;
 	}
 }
