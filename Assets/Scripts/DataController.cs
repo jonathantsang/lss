@@ -72,8 +72,6 @@ public class DataController : MonoBehaviour {
 	int exclusivesWorth; // upgraded later
 
 	void Awake(){
-		DontDestroyOnLoad(this.gameObject);
-
 		//Check if instance already exists
 		if (instance == null)
 			instance = this;
@@ -85,6 +83,7 @@ public class DataController : MonoBehaviour {
 				Destroy(gameObject);
 			}
 		}
+		DontDestroyOnLoad(this.gameObject);
 
 		// This is called every time
 		if (moneyMakers == null) {

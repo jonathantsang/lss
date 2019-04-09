@@ -27,7 +27,8 @@ money:
 - buying games are industries
 
 upgrades:
-- none for now
+6 for now
+- interns?
 
 Description:
 - This is a timed exclusive for 6 months on Steam. Then this will be releasing on CD-roms in specially marked boxes of your favourite cereals. (Not really)
@@ -56,3 +57,5 @@ achievements:
 - give me deus ex
 - for the record
 - burger town
+- ah shit, here we go again
+- 
