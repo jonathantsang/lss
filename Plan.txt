@@ -12,11 +12,18 @@ April 8:
 - upgrades page
 - saves
 
+April 9:
+- animated bar loader
+- icons
+- saves full
+
 
 
 todo:
 - upgrades
 - saves
 - interns (auto run)
+- prestige system
+- difficulty
 - art
 - steamworks

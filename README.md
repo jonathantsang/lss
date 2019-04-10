@@ -21,6 +21,9 @@ money:
 - create lootboxes
 - sell customer data
 
+save at:
+mac: /Users/$USER/Library/Application Support/chlsea/lss
+
 
 - prestiging
 - exclusives are prestige points onwards
@@ -58,4 +61,5 @@ achievements:
 - for the record
 - burger town
 - ah shit, here we go again
-- 
+- cheat (You cheated not only the game but yourself. You didn't grow. You didn't improve. You took a shortcut and gained nothing. You experienced a hollow victory. Nothing was risked and nothing was gained. It's sad that you don't know the difference of what true gamers are.)
+- microtransaction simulator 2
