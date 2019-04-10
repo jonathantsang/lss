@@ -903,6 +903,10 @@ Prefab:
       propertyPath: m_Name
       value: MoneyMaker (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1830171963298766, guid: 4bc93bd25937c491ca97f7adbcfdb2d9, type: 2}
+      propertyPath: m_Name
+      value: ProgressBar
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bc93bd25937c491ca97f7adbcfdb2d9, type: 2}
   m_IsPrefabParent: 0

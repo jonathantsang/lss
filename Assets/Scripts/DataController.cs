@@ -197,7 +197,8 @@ public class DataController : MonoBehaviour {
 			moneyMakers[i].priceScale = mms[i].priceScale;
 			moneyMakers[i].productionScale = mms[i].productionScale;
 			moneyMakers[i].waitTime = mms[i].waitTime;
-			moneyMakers[i].mutex = mms[i].mutex;
+			// For now we assume it didn't stop half-way through exit, all mutex are fre
+			moneyMakers[i].mutex = false; // mms[i].mutex;
 		}
 	}
 

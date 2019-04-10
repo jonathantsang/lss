@@ -75,6 +75,10 @@ public class GameController : MonoBehaviour {
 		UpgradeButton ub = moneyMaker.transform.GetChild(2).GetComponent<UpgradeButton> ();
 		ub.id = id;
 
+		// Set id at each LoadBar so it knows who it is
+		ProgressBar pb = moneyMaker.transform.GetChild(4).transform.GetChild(0).GetComponent<ProgressBar> ();
+		pb.id = id;
+
 		// Set each value to zero
 
 		// Count

@@ -14,10 +14,12 @@ public class ClickButton : MonoBehaviour {
 	// Dep
 	GameController gameController;
 	DataController dataController;
+	ProgressBar progressBar;
 
 	void Awake(){
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
+		progressBar = gameObject.transform.parent.GetChild (4).transform.GetChild (0).GetComponent<ProgressBar> ();
 	}
 
 	// Use this for initialization
@@ -47,6 +49,9 @@ public class ClickButton : MonoBehaviour {
 
 	IEnumerator addDelayedMoney(){
 		int waitTime = dataController.getMoneyMakerWaitTime (id);
+		// Animation in ProgressBar
+		progressBar.animateProgressBar();
+
 		yield return new WaitForSeconds(waitTime);
 		dataController.increaseMoney (dataController.getMoneyMakerProduction (id));
 		// print ("added delayed money");
