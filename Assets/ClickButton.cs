@@ -19,7 +19,7 @@ public class ClickButton : MonoBehaviour {
 	void Awake(){
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
-		progressBar = gameObject.transform.parent.GetChild (4).transform.GetChild (0).GetComponent<ProgressBar> ();
+		progressBar = gameObject.transform.parent.GetChild (4).GetComponent<ProgressBar> ();
 	}
 
 	// Use this for initialization

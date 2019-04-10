@@ -27,5 +27,6 @@ todo:
 - interns (auto run)
 - prestige system
 - difficulty
+- encrypt save
 - art
 - steamworks
