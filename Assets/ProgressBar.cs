@@ -66,7 +66,7 @@ public class ProgressBar : MonoBehaviour {
 		print (waitTime);
 		print (incrementPerFrame);
 
-		while (greenBar.transform.localScale.x < 1) {
+		while (greenBar.transform.localScale.x <= 1) {
 			float val = (float) (greenBar.transform.localScale.x + incrementPerFrame);
 			greenBar.transform.localScale = new Vector3(val, 1.0f, 1.0f);
 			yield return new WaitForSeconds(0.01f);
@@ -77,7 +77,7 @@ public class ProgressBar : MonoBehaviour {
 		// Assume from scale 0 to scale 1, small increments based on datacontroller money maker production time
 		int waitTime = dataController.getMoneyMakerWaitTime(id);
 
-		while (waitTime > 0) {
+		while (waitTime >= 0) {
 			// Convert waitTime in seconds to 00:00:00 -> HH:MM:SS format
 			string time = secondsToTimeFormat(waitTime);
 			waitTime -= 1;
