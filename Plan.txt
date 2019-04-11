@@ -16,14 +16,13 @@ April 9:
 - animated bar loader
 
 April 10:
-- icons
+- mm lvl0 locked
+- icons for money makers, names
 - saves full
-
+- upgrades mapped out
 
 
 todo:
-- upgrades
-- saves
 - interns (auto run)
 - prestige system
 - difficulty

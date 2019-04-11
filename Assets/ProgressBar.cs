@@ -63,14 +63,13 @@ public class ProgressBar : MonoBehaviour {
 		int waitTime = dataController.getMoneyMakerWaitTime(id);
 		float incrementPerFrame = (1.0f / (float)waitTime) / 60.0f;
 
-		print (waitTime);
-		print (incrementPerFrame);
-
 		while (greenBar.transform.localScale.x <= 1) {
 			float val = (float) (greenBar.transform.localScale.x + incrementPerFrame);
 			greenBar.transform.localScale = new Vector3(val, 1.0f, 1.0f);
 			yield return new WaitForSeconds(0.01f);
 		}
+		// At the end reset the progress bar
+		greenBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
 	}
 
 	IEnumerator loadTimer(){

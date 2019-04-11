@@ -52,7 +52,7 @@ public class ClickButton : MonoBehaviour {
 		// Animation in ProgressBar
 		progressBar.animateProgressBar();
 
-		yield return new WaitForSeconds(waitTime);
+		yield return new WaitForSeconds(waitTime+0.5f); // +1 ?
 		dataController.increaseMoney (dataController.getMoneyMakerProduction (id));
 		// print ("added delayed money");
 		gameController.updateUI ();

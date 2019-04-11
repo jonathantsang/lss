@@ -28,7 +28,7 @@ public static class SaveLoadManager {
 		} else {
 			Debug.Log ("create new");
 			Debug.LogError ("File does not exist");
-			return new global::SaveData (0, new MoneyMaker[6]);
+			return new global::SaveData (0, null);
 		}
 	}
 }

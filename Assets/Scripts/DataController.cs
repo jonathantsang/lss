@@ -129,7 +129,7 @@ public class DataController : MonoBehaviour {
 
 	void initializeMoneyMakers(){
 		// this is called at each scene change, load from dataController values instead
-		moneyMakers [0].level = 0;
+		moneyMakers [0].level = 1;
 		moneyMakers [0].price = 1;
 		moneyMakers [0].production = 1;
 		moneyMakers [0].priceScale = 1.1f;
@@ -188,17 +188,29 @@ public class DataController : MonoBehaviour {
 		money = m;
 		// Money Makers Load
 		moneyMakers = new MoneyMaker[6];
-		for (int i = 0; i < mms.Length; i++) {
-			moneyMakers [i] = new MoneyMaker ();
-			// Copy data over
-			moneyMakers[i].level = mms[i].level;
-			moneyMakers[i].price = mms[i].price;
-			moneyMakers[i].production = mms[i].production;
-			moneyMakers[i].priceScale = mms[i].priceScale;
-			moneyMakers[i].productionScale = mms[i].productionScale;
-			moneyMakers[i].waitTime = mms[i].waitTime;
-			// For now we assume it didn't stop half-way through exit, all mutex are fre
-			moneyMakers[i].mutex = false; // mms[i].mutex;
+
+		if (mms == null) {
+			for (int i = 0; i < 6; i++) {
+				moneyMakers [i] = new MoneyMaker ();
+			}
+			moneyMakers [0].level = 1;
+			initializeMoneyMakers ();
+		} else {
+			for (int i = 0; i < mms.Length; i++) {
+				moneyMakers [i] = new MoneyMaker ();
+				// Copy data over if not null
+				moneyMakers[i].level = mms[i].level;
+				moneyMakers[i].price = mms[i].price;
+				moneyMakers[i].production = mms[i].production;
+				moneyMakers[i].priceScale = mms[i].priceScale;
+				moneyMakers[i].productionScale = mms[i].productionScale;
+				moneyMakers[i].waitTime = mms[i].waitTime;
+				// For now we assume it didn't stop half-way through exit, all mutex are fre
+				moneyMakers[i].mutex = false; // mms[i].mutex;
+			}
+			if (moneyMakers [0].level == 0) {
+				moneyMakers [0].level = 1;
+			}
 		}
 	}
 

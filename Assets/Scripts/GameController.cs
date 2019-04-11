@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour {
 	public void updateUI(int id = 0){
 		// Updates MoneyMaker and Stats
 		updateStatsUI();
+		// Update the MoneyMaker themselves
 		for (int i = 0; i < moneyMakers.transform.childCount; i++) {
 			updateMoneyMakerUI (i);
 		}
@@ -67,6 +68,16 @@ public class GameController : MonoBehaviour {
 	void updateMoneyMakerUI(int id){
 		GameObject moneyMaker = moneyMakers.transform.GetChild (id).gameObject;
 
+		// Turn on the LockedCover if the level is 0
+		if (dataController.getMoneyMakerLevel (id) == 0) {
+			moneyMaker.transform.GetChild (5).gameObject.SetActive (true);
+			// Set the LockedCover text price
+			Text unlockPrice = moneyMaker.transform.GetChild(5).transform.GetChild(0).GetComponent<Text> ();
+			unlockPrice.text = "$ " + dataController.getMoneyMakerPrice (id).ToString();
+		} else {
+			moneyMaker.transform.GetChild (5).gameObject.SetActive (false);
+		}
+
 		// Set id at each ClickButton so it knows who it is
 		ClickButton cb = moneyMaker.transform.GetChild(1).GetComponent<ClickButton> ();
 		cb.id = id;
@@ -78,6 +89,10 @@ public class GameController : MonoBehaviour {
 		// Set id at each LoadBar so it knows who it is
 		ProgressBar pb = moneyMaker.transform.GetChild(4).GetComponent<ProgressBar> ();
 		pb.id = id;
+
+		// Set id at each LockedCover so it knows who it is
+		LockedCover lc = moneyMaker.transform.GetChild(5).GetComponent<LockedCover> ();
+		lc.id = id;
 
 		// Set each value to zero
 

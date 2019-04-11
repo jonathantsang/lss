@@ -37,6 +37,7 @@ Description:
 - This is a timed exclusive for 6 months on Steam. Then this will be releasing on CD-roms in specially marked boxes of your favourite cereals. (Not really)
 
 achievements:
+- thanks for not pirating this game (start up)
 - steam exclusive (let's get this bread)
 - first one is not free (to-play)
 - okay, this is epic ()
@@ -63,3 +64,4 @@ achievements:
 - ah shit, here we go again
 - cheat (You cheated not only the game but yourself. You didn't grow. You didn't improve. You took a shortcut and gained nothing. You experienced a hollow victory. Nothing was risked and nothing was gained. It's sad that you don't know the difference of what true gamers are.)
 - microtransaction simulator 2
+- who watches the (watchmen?) = click the timer 1985 times
