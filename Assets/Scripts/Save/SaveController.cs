@@ -57,7 +57,7 @@ public class SaveController : MonoBehaviour {
 		*/
 		if (dataController != null) {
 			print ("saving");
-			SaveLoadManager.SaveData (dataController.getTotalMoney (), dataController.getMoneyMakers ());
+			SaveLoadManager.SaveData (dataController.getTotalMoney (), dataController.getMoneyMakers (), dataController.getUpgrades (), dataController.getMiscStats ());
 		}
 
 	}
@@ -70,7 +70,7 @@ public class SaveController : MonoBehaviour {
 		// print(loadedStats.Currency);
 		// print (loadedStats.Collected);
 		// IC.LoadInventory (loadedStats.Collected, loadedStats.RecipesUnlocked, loadedStats.Stats, loadedStats.ShopUnlocked, loadedStats.Currency);
-		dataController.loadInventory(loadedStats.money, loadedStats.moneyMakers);
+		dataController.loadInventory(loadedStats.money, loadedStats.moneyMakers, loadedStats.upgrades, loadedStats.miscStats);
 
 		// Loads data
 		// print(loadedStats);

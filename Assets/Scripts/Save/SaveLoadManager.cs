@@ -6,11 +6,11 @@ using System.IO;
 
 public static class SaveLoadManager {
 
-	public static void SaveData(int money, MoneyMaker[] mms){
+	public static void SaveData(int money, MoneyMaker[] mms, Upgrade[] us, int[] ms){
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream stream = new FileStream (Application.persistentDataPath + "/data.sav", FileMode.Create);
 
-		SaveData data = new SaveData (money, mms);
+		SaveData data = new SaveData (money, mms, us, ms);
 		bf.Serialize (stream, data);
 		stream.Close ();
 	}
@@ -28,7 +28,7 @@ public static class SaveLoadManager {
 		} else {
 			Debug.Log ("create new");
 			Debug.LogError ("File does not exist");
-			return new global::SaveData (0, null);
+			return new global::SaveData (0, null, null, null);
 		}
 	}
 }
@@ -39,6 +39,8 @@ public class SaveData {
 	public int money = 0; // Total money
 
 	public MoneyMaker[] moneyMakers;
+	public Upgrade[] upgrades;
+	public int[] miscStats;
 	/*
 	public int NumberOpened = 0; // How many crates opened
 	public int Currency = 10; // How much currency they have
@@ -91,8 +93,10 @@ public class SaveData {
 		OpenCount = numperpack;
 	}*/
 
-	public SaveData(int m, MoneyMaker[] mm){
+	public SaveData(int m, MoneyMaker[] mm, Upgrade[] usm, int[] ms){
 		money = m;
 		moneyMakers = mm;
+		upgrades = usm;
+		miscStats = ms;
 	}
 }

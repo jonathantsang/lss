@@ -184,7 +184,7 @@ public class DataController : MonoBehaviour {
 	}
 
 	// Load/Save
-	public void loadInventory(int m, MoneyMaker[] mms){
+	public void loadInventory(int m, MoneyMaker[] mms, Upgrade[] us, int[] ms){
 		money = m;
 		// Money Makers Load
 		moneyMakers = new MoneyMaker[6];
@@ -210,6 +210,23 @@ public class DataController : MonoBehaviour {
 			}
 			if (moneyMakers [0].level == 0) {
 				moneyMakers [0].level = 1;
+			}
+		}
+
+		upgrades = new Upgrade[6];
+		// Upgrades load
+		if (us == null){
+			for (int i = 0; i < 6; i++) {
+				upgrades [i] = new Upgrade ();
+			}
+			initializeUpgrades ();
+		}
+
+		miscStats = new int[10];
+		// Misc Stats load
+		if (ms == null){
+			for (int i = 0; i < 10; i++) {
+				miscStats [i] = 0;
 			}
 		}
 	}
@@ -238,7 +255,7 @@ public class DataController : MonoBehaviour {
 		return moneyMakers;
 	}
 
-	public Upgrade[] getUpgrade(){
+	public Upgrade[] getUpgrades(){
 		return upgrades;
 	}
 

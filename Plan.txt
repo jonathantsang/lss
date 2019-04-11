@@ -17,10 +17,12 @@ April 9:
 
 April 10:
 - mm lvl0 locked
-- icons for money makers, names
 - saves full
 - upgrades mapped out
 
+
+
+- icons for money makers, names
 
 todo:
 - interns (auto run)
