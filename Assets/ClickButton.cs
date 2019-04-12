@@ -52,7 +52,8 @@ public class ClickButton : MonoBehaviour {
 		// Animation in ProgressBar
 		progressBar.animateProgressBar();
 
-		yield return new WaitForSeconds(waitTime-0.1f);
+		yield return new WaitForSecondsRealtime(waitTime);
+		//yield return new WaitForSeconds(0);
 		dataController.setMoneyMakerMutex (id, false);
 
 		// The update UI delay seems awkward

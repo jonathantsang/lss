@@ -22,8 +22,8 @@ April 10:
 
 April 11:
 - number wrapper for length
-- fix clickbutton + progress bar synchronization on waitforseconds?
-
+- fix clickbutton + progress bar synchronization on waitforseconds? -> looks frame dependent
+- upgrades ui
 
 
 - icons for money makers, names

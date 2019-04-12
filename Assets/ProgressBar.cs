@@ -64,11 +64,12 @@ public class ProgressBar : MonoBehaviour {
 		// Assume from scale 0 to scale 1, small increments based on datacontroller money maker production time
 		int waitTime = dataController.getMoneyMakerWaitTime(id);
 		float incrementPerFrame = (1.0f / (float)waitTime) / 60.0f;
-
-		while (greenBar.transform.localScale.x <= 1) {
+		int steps = 0;
+		while (greenBar.transform.localScale.x <= 1.0f) {
 			float val = (float) (greenBar.transform.localScale.x + incrementPerFrame);
 			greenBar.transform.localScale = new Vector3(val, 1.0f, 1.0f);
-			yield return new WaitForSeconds(0.01f);
+			yield return new WaitForSecondsRealtime(0.01f);
+			steps += 1;
 		}
 		// At the end reset the progress bar
 		greenBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
@@ -83,7 +84,7 @@ public class ProgressBar : MonoBehaviour {
 			string time = secondsToTimeFormat(waitTime);
 			waitTime -= 1;
 			timer.text = time;
-			yield return new WaitForSeconds(1.0f);
+			yield return new WaitForSecondsRealtime(1.0f);
 		}
 		// At the end put back to default
 		timer.text = secondsToTimeFormat(dataController.getMoneyMakerWaitTime(id));
