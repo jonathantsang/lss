@@ -33,6 +33,10 @@ upgrades:
 6 for now
 - interns?
 
+real upgrades
+- upgrade id, fields[3] price, production, waittime
+- create these
+
 Description:
 - This is a timed exclusive for 6 months on Steam. Then this will be releasing on CD-roms in specially marked boxes of your favourite cereals. (Not really)
 

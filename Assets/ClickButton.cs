@@ -52,10 +52,12 @@ public class ClickButton : MonoBehaviour {
 		// Animation in ProgressBar
 		progressBar.animateProgressBar();
 
-		yield return new WaitForSeconds(waitTime+0.5f); // +1 ?
+		yield return new WaitForSeconds(waitTime-0.1f);
+		dataController.setMoneyMakerMutex (id, false);
+
+		// The update UI delay seems awkward
 		dataController.increaseMoney (dataController.getMoneyMakerProduction (id));
 		// print ("added delayed money");
 		gameController.updateUI ();
-		dataController.setMoneyMakerMutex (id, false);
 	}
 }

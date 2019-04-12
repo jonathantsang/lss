@@ -11,12 +11,14 @@ public class ProgressBar : MonoBehaviour {
 
 	// Dep
 	DataController dataController;
+	GameController gameController;
 
 	// Use this for initialization
 	void Start () {
 		greenBar = transform.GetChild(0).GetComponent<Image> ();
 		timer = transform.GetChild (1).GetComponent<Text> ();
 		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 
 		// Start empty
 		greenBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);

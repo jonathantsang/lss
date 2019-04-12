@@ -20,6 +20,10 @@ April 10:
 - saves full
 - upgrades mapped out
 
+April 11:
+- number wrapper for length
+- fix clickbutton + progress bar synchronization on waitforseconds?
+
 
 
 - icons for money makers, names

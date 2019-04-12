@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Safety?, probably update after certain times?
-		updateUI();
+		// updateUI();
 	}
 
 	void setupMoneyMakers(){
@@ -59,9 +59,13 @@ public class GameController : MonoBehaviour {
 
 	void updateStatsUI(){
 		// Update money count
-		stats = GameObject.FindGameObjectWithTag ("Stats"); // stats is reused in stats page and clicker page, so have to relink
+		if (stats == null) {
+			stats = GameObject.FindGameObjectWithTag ("Stats"); // stats is reused in stats page and clicker page, so have to relink
+		}
 		Text money = stats.transform.GetChild(0).GetComponent<Text>();
-		money.text = "$" + dataController.getTotalMoney ().ToString ();
+
+		SciNum sn = new SciNum(dataController.getTotalMoney ());
+		money.text = "$ " + sn.getNum ();
 	}
 
 	// takes an id right now, could take nothing and update all
