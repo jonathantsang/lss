@@ -22,14 +22,15 @@ April 10:
 
 April 11:
 - number wrapper for length
-- fix clickbutton + progress bar synchronization on waitforseconds? -> looks frame dependent
+- fix clickbutton + progress bar synchronization on waitforseconds? -> waitrealtime
 - upgrades ui
 
-
+April 12:
 - icons for money makers, names
+- interns (auto run)
+
 
 todo:
-- interns (auto run)
 - prestige system
 - difficulty
 - encrypt save
