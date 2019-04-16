@@ -6,7 +6,7 @@ using System.IO;
 
 public static class SaveLoadManager {
 
-	public static void SaveData(int money, MoneyMaker[] mms, Upgrade[] us, int[] ms){
+	public static void SaveData(long money, MoneyMaker[] mms, Upgrade[] us, int[] ms){
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream stream = new FileStream (Application.persistentDataPath + "/data.sav", FileMode.Create);
 
@@ -36,7 +36,7 @@ public static class SaveLoadManager {
 [System.Serializable]
 public class SaveData {
 
-	public int money = 0; // Total money
+	public long money = 0; // Total money
 
 	public MoneyMaker[] moneyMakers;
 	public Upgrade[] upgrades;
@@ -93,7 +93,7 @@ public class SaveData {
 		OpenCount = numperpack;
 	}*/
 
-	public SaveData(int m, MoneyMaker[] mm, Upgrade[] usm, int[] ms){
+	public SaveData(long m, MoneyMaker[] mm, Upgrade[] usm, int[] ms){
 		money = m;
 		moneyMakers = mm;
 		upgrades = usm;

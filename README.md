@@ -1,8 +1,8 @@
 legend store simulator
+l3pic
 3pic store simulator
 
 sept 13 release date
-- disclaimer, all similarities are coincidental
 
 features:
 - clicker
@@ -24,21 +24,28 @@ money:
 save at:
 mac: /Users/$USER/Library/Application Support/chlsea/lss
 
+minigames:
+- tony hawk
+- bl
+- nba2k
+- guithero
 
-- prestiging
-- exclusives are prestige points onwards
-- buying games are industries
+addons:
+- dev chest
+- speedrun mode
+- prestiging: exclusives are prestige points onwards
 
 upgrades:
 6 for now
 - interns?
-
 real upgrades
 - upgrade id, fields[3] price, production, waittime
 - create these
 
+- memes -> image swap
+
 Description:
-- This is a timed exclusive for 6 months on Steam. Then this will be releasing on CD-roms in specially marked boxes of your favourite cereals. (Not really)
+- This is a timed exclusive for 6 months on Steam. Then this will be releasing on CD-roms in specially marked boxes of your favourite cereals. After that promotional period of two weeks and three days we will be in exclusive packs of chicken from select farms.
 
 achievements:
 - thanks for not pirating this game (start up)
@@ -69,3 +76,6 @@ achievements:
 - cheat (You cheated not only the game but yourself. You didn't grow. You didn't improve. You took a shortcut and gained nothing. You experienced a hollow victory. Nothing was risked and nothing was gained. It's sad that you don't know the difference of what true gamers are.)
 - microtransaction simulator 2
 - who watches the (watchmen?) = click the timer 1985 times
+- seize the memes of production (Is a man not entitled to the sweat of his brow?)
+- double platinum no features
+- Telling a Tale (RIP)

@@ -4,10 +4,10 @@ using UnityEngine;
 
 [System.Serializable]
 public class MoneyMaker {
-	public int level; // ex. 4
+	public long level; // ex. 4
 
-	public int price; // ex. 10
-	public int production; // ex. 100
+	public long price; // ex. 10
+	public long production; // ex. 100
 
 	// Scale factors on the next levels (float, round int based on mathf)
 	public float priceScale; // ex. 1.1, 10 -> 11
@@ -40,15 +40,19 @@ public class Upgrade {
 	public string name;
 
 	// Cost of upgrade
-	public int cost;
+	public long cost;
 
 	// If the upgrade has been bought
 	public int bought;
+
+	// Short description of achievement
+	public string description;
 
 	public Upgrade(){
 		name = "unamed";
 		cost = 1;
 		bought = 0;
+		description = "Description";
 	}
 }
 
@@ -58,7 +62,7 @@ public class DataController : MonoBehaviour {
 	public static DataController instance = null;
 
 	// Stats
-	int money = 0;
+	long money = 0;
 
 	// Store data on the money makers
 	MoneyMaker[] moneyMakers;
@@ -70,7 +74,7 @@ public class DataController : MonoBehaviour {
 	int[] miscStats;
 
 	// Exclusives
-	int exclusives;
+	long exclusives;
 	int exclusivesWorth; // upgraded later
 
 	void Awake(){
@@ -179,12 +183,28 @@ public class DataController : MonoBehaviour {
 	}
 
 	void initializeUpgrades(){
-		upgrades[0].name = "Cash infusion";
+		// For now interns
+		upgrades[0].name = "Intern #1";
 		upgrades[0].cost = 10000;
+
+		upgrades[1].name = "Intern #2";
+		upgrades[1].cost = 100000;
+
+		upgrades[2].name = "Intern #3";
+		upgrades[2].cost = 10000000;
+
+		upgrades[3].name = "Intern #4";
+		upgrades[3].cost = 1000000000;
+
+		upgrades[4].name = "Intern #5";
+		upgrades[4].cost = 100000000000;
+
+		upgrades[5].name = "Intern #6";
+		upgrades[5].cost = 100000000000000;
 	}
 
 	// Load/Save
-	public void loadInventory(int m, MoneyMaker[] mms, Upgrade[] us, int[] ms){
+	public void loadInventory(long m, MoneyMaker[] mms, Upgrade[] us, int[] ms){
 		money = m;
 		// Money Makers Load
 		moneyMakers = new MoneyMaker[6];
@@ -232,11 +252,11 @@ public class DataController : MonoBehaviour {
 	}
 
 	// Public Operations on Money
-	public void increaseMoney(int amount){
+	public void increaseMoney(long amount){
 		money += amount;
 	}
 
-	public void decreaseMoney(int amount){
+	public void decreaseMoney(long amount){
 		money -= amount;
 	}
 
@@ -267,19 +287,20 @@ public class DataController : MonoBehaviour {
 		return miscStats [0];
 	}
 
-	public int getTotalMoney(){
+	public long getTotalMoney(){
 		return money;
 	}
 
-	public int getMoneyMakerLevel(int i){
+	// Money Makers
+	public long getMoneyMakerLevel(int i){
 		return moneyMakers [i].level;
 	}
 
-	public int getMoneyMakerPrice(int i){
+	public long getMoneyMakerPrice(int i){
 		return moneyMakers [i].price;
 	}
 
-	public int getMoneyMakerProduction(int i){
+	public long getMoneyMakerProduction(int i){
 		return moneyMakers [i].production;
 	}
 
@@ -297,6 +318,23 @@ public class DataController : MonoBehaviour {
 
 	public bool getMoneyMakerMutex(int i){
 		return moneyMakers [i].mutex;
+	}
+
+	// Upgrades
+	public string getUpgradeName(int i){
+		return upgrades [i].name;
+	}
+
+	public long getUpgradeCost(int i){
+		return upgrades [i].cost;
+	}
+
+	public string getUpgradeDescription(int i){
+		return upgrades [i].description;
+	}
+
+	public int getUpgradeBought(int i){
+		return upgrades [i].bought;
 	}
 
 	// Public Setters

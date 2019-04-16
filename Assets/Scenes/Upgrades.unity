@@ -380,6 +380,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1594635226393048, guid: a7ac89249e6b2469ab0a0e4c3be96f72, type: 2}
+      propertyPath: m_Name
+      value: Upgrade (4)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7ac89249e6b2469ab0a0e4c3be96f72, type: 2}
   m_IsPrefabParent: 0
@@ -847,7 +851,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1594635226393048, guid: a7ac89249e6b2469ab0a0e4c3be96f72, type: 2}
       propertyPath: m_Name
-      value: Upgrade (1)
+      value: Upgrade (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7ac89249e6b2469ab0a0e4c3be96f72, type: 2}
@@ -1138,6 +1142,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 224023849193478862, guid: a7ac89249e6b2469ab0a0e4c3be96f72,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7ac89249e6b2469ab0a0e4c3be96f72, type: 2}
   m_IsPrefabParent: 0
@@ -1369,7 +1378,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1594635226393048, guid: a7ac89249e6b2469ab0a0e4c3be96f72, type: 2}
       propertyPath: m_Name
-      value: Upgrade (1)
+      value: Upgrade (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7ac89249e6b2469ab0a0e4c3be96f72, type: 2}
@@ -1754,6 +1763,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1594635226393048, guid: a7ac89249e6b2469ab0a0e4c3be96f72, type: 2}
+      propertyPath: m_Name
+      value: Upgrade (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7ac89249e6b2469ab0a0e4c3be96f72, type: 2}
   m_IsPrefabParent: 0
@@ -1772,7 +1785,7 @@ GameObject:
   - component: {fileID: 1900659367}
   m_Layer: 5
   m_Name: Content
-  m_TagString: Untagged
+  m_TagString: Upgrades
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

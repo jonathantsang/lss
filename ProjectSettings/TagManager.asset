@@ -8,6 +8,7 @@ TagManager:
   - DataController
   - Slides
   - Stats
+  - Upgrades
   layers:
   - Default
   - TransparentFX

@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class SciNum {
 
-	int originalNumber = 0;
+	long originalNumber = 0;
 	string converted;
 
-	public SciNum(int num = 0){
-		originalNumber = num;
+	public SciNum(long num = 0){
+		if (num > long.MaxValue) {
+			originalNumber = long.MaxValue; // temp fix
+		} else {
+			originalNumber = num;
+		}
 		if (num <= 9999999) {
 			converted = num.ToString ();
 		} else {
+			// 10000000
 			converted = num.ToString ();
-			string firstpart = converted.Substring (0, 3);
-			firstpart = firstpart.Substring (0, 1) + "." + firstpart.Substring (1, 2);
+			// Could also use 88A 99AAA, etc. base 26
+			int leng = 4;
+
+			string firstpart = converted.Substring (0, leng); // length 5 sci num
+			firstpart = firstpart.Substring (0, 1) + "." + firstpart.Substring (1);
 			string end = "E";
 			int e = converted.Length - 1; // 1 for the scientific notation
 			end += e.ToString();
@@ -26,7 +34,7 @@ public class SciNum {
 		return converted;
 	}
 
-	public int getOriginalNum(){
+	public long getOriginalNum(){
 		return originalNumber;
 	}
 }

@@ -24,15 +24,17 @@ April 11:
 - number wrapper for length
 - fix clickbutton + progress bar synchronization on waitforseconds? -> waitrealtime
 - upgrades ui
+- logo
 
-April 12:
+April 15:
 - icons for money makers, names
+- upgrades
 - interns (auto run)
-
 
 todo:
 - prestige system
+- save/load time calculations, timestamp on last played
 - difficulty
 - encrypt save
 - art
-- steamworks
+- steamworks -> setup, ach, saves, etc.
