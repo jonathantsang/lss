@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public class MoneyMaker {
@@ -71,7 +72,9 @@ public class DataController : MonoBehaviour {
 	Upgrade[] upgrades;
 
 	// Misc stats
-	int[] miscStats;
+	long[] miscStats;
+	// [0] total taps
+	// [1] time date stamp 
 
 	// Exclusives
 	long exclusives;
@@ -117,7 +120,9 @@ public class DataController : MonoBehaviour {
 		if (miscStats == null) {
 			// Misc stats/achievements
 			// 0 total clicks
-			miscStats = new int[10];
+			// 1 time
+			miscStats = new long[10];
+			miscStats [1] = System.DateTime.Now.ToFileTime ();
 		}
 	}
 
@@ -204,7 +209,7 @@ public class DataController : MonoBehaviour {
 	}
 
 	// Load/Save
-	public void loadInventory(long m, MoneyMaker[] mms, Upgrade[] us, int[] ms){
+	public void loadInventory(long m, MoneyMaker[] mms, Upgrade[] us, long[] ms){
 		money = m;
 		// Money Makers Load
 		moneyMakers = new MoneyMaker[6];
@@ -242,13 +247,26 @@ public class DataController : MonoBehaviour {
 			initializeUpgrades ();
 		}
 
-		miscStats = new int[10];
-		// Misc Stats load
-		if (ms == null){
+		miscStats = new long[10];
+		// Misc Stats load (FOR NOW)
+		if (ms == null) {
 			for (int i = 0; i < 10; i++) {
 				miscStats [i] = 0;
 			}
+		} else {
+			DateTime res = System.DateTime.FromFileTime (ms [1]);
+			/*print ("Previous time was " + res.ToFileTime());
+			print ("Now it is " + System.DateTime.Now.ToFileTime ());
+			print ("Before: " + res.ToLongDateString ());
+			print ("Now: " + System.DateTime.Now.ToLongDateString ());
+			*/
 		}
+
+
+		// 1 time/date
+		DateTime currentTime = System.DateTime.Now;
+		miscStats [1] = currentTime.ToFileTime ();
+		print (miscStats [1]);
 	}
 
 	// Public Operations on Money
@@ -267,7 +285,6 @@ public class DataController : MonoBehaviour {
 		// Do not edit scales for now
 	}
 
-
 	// Public Getters
 
 	// Full Getters for Save
@@ -279,11 +296,11 @@ public class DataController : MonoBehaviour {
 		return upgrades;
 	}
 
-	public int[] getMiscStats(){
+	public long[] getMiscStats(){
 		return miscStats;
 	}
 
-	public int getTotalClicks(){
+	public long getTotalClicks(){
 		return miscStats [0];
 	}
 

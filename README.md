@@ -79,3 +79,6 @@ achievements:
 - seize the memes of production (Is a man not entitled to the sweat of his brow?)
 - double platinum no features
 - Telling a Tale (RIP)
+- Exclusive (Sept 13)
+- Inclusive (April 13)
+- 
