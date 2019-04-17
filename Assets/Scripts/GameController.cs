@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour {
 	GameObject upgrades;
 	GameObject stats;
 	DataController dataController;
+
+	public GameObject closeableWindow;
 
 	void Awake(){
 		print ("awake gc");
@@ -31,6 +34,18 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		print ("start gc");
+
+		// create popup about idle
+		GameObject window = Instantiate(closeableWindow, new Vector3(0,0,0), Quaternion.identity);
+		System.DateTime res = System.DateTime.FromFileTime (dataController.getMiscStats()[1]);
+		System.DateTime now = System.DateTime.Now;
+		System.TimeSpan diff = now.Subtract(res);
+		window.transform.GetChild (0).GetComponent<Text> ().text = "You earned $1 after waiting " + diff.ToString ();
+
+		GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
+		window.transform.parent = canvas.transform;
+		// Not sure why scale goes to != 1
+		window.transform.localScale = new Vector3(1,1,1);
 	}
 	
 	// Update is called once per frame
@@ -137,8 +152,13 @@ public class GameController : MonoBehaviour {
 		upgradeDescription.text = dataController.getUpgradeDescription (id);
 
 		// Cost in Button
-		Text upgradeCost = upgrade.transform.GetChild(3).GetChild(0).GetComponent<Text>();
-		upgradeCost.text = new SciNum(dataController.getUpgradeCost (id)).getNum(); 
+		if (dataController.getUpgradeBought (id) == 1) {
+			Text upgradeCost = upgrade.transform.GetChild(3).GetChild(0).GetComponent<Text>();
+			upgradeCost.text = "BOUGHT";
+		} else {
+			Text upgradeCost = upgrade.transform.GetChild(3).GetChild(0).GetComponent<Text>();
+			upgradeCost.text = new SciNum(dataController.getUpgradeCost (id)).getNum();
+		}	 
 	}
 
 	// Buy/Sell

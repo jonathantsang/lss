@@ -9,6 +9,7 @@ TagManager:
   - Slides
   - Stats
   - Upgrades
+  - Canvas
   layers:
   - Default
   - TransparentFX

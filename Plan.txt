@@ -27,12 +27,13 @@ April 11:
 - logo
 
 April 15:
-- icons for money makers, names
 - upgrades
 - timestamp
 
 April 16:
-- interns (auto run)
+- icons for money makers, names
+- interns (auto run) -> mutex run
+- timestamp used in last time arrived message
 
 todo:
 - prestige system
