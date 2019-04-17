@@ -31,9 +31,11 @@ April 15:
 - timestamp
 
 April 16:
+- timestamp used in last time arrived message
+
+April 17:
 - icons for money makers, names
 - interns (auto run) -> mutex run
-- timestamp used in last time arrived message
 
 todo:
 - prestige system

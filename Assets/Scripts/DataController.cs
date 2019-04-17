@@ -354,6 +354,11 @@ public class DataController : MonoBehaviour {
 		return upgrades [i].bought;
 	}
 
+	// MiscStats
+	public long getMiscStat(int i){
+		return miscStats [i];
+	}
+
 	// Public Setters
 	public void setMoneyMakerMutex(int i, bool value){
 		moneyMakers [i].mutex = value;

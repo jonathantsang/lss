@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour {
 
 		// create popup about idle
 		GameObject window = Instantiate(closeableWindow, new Vector3(0,0,0), Quaternion.identity);
-		System.DateTime res = System.DateTime.FromFileTime (dataController.getMiscStats()[1]);
+		System.DateTime res = System.DateTime.FromFileTime (dataController.getMiscStat(1));
 		System.DateTime now = System.DateTime.Now;
 		System.TimeSpan diff = now.Subtract(res);
 		window.transform.GetChild (0).GetComponent<Text> ().text = "You earned $1 after waiting " + diff.ToString ();
