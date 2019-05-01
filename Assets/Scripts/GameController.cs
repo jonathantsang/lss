@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 
 	GameObject moneyMakers;
-	GameObject upgrades;
 	GameObject stats;
 	DataController dataController;
 
@@ -19,15 +18,10 @@ public class GameController : MonoBehaviour {
 		// This is called at each scene change (not persistent, and destroyed at scene change)
 
 		moneyMakers = GameObject.FindGameObjectWithTag ("MoneyMakers");
-		upgrades = GameObject.FindGameObjectWithTag ("Upgrades");
 		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
 
 		// Only on game page
-		if (SceneManager.GetActiveScene ().name == "ClickerScreen") {
-			setupMoneyMakers ();
-		} else if (SceneManager.GetActiveScene ().name == "Upgrades") {
-			setupUpgrades ();
-		}
+		setupMoneyMakers ();
 		updateUI ();
 	}
 
@@ -66,16 +60,10 @@ public class GameController : MonoBehaviour {
 		// Updates MoneyMaker and Stats
 		updateStatsUI();
 
-		if (SceneManager.GetActiveScene ().name == "ClickerScreen") {
-			// Update the MoneyMaker themselves
-			for (int i = 0; i < moneyMakers.transform.childCount; i++) {
-				updateMoneyMakerUI (i);
-			}
-		} else if (SceneManager.GetActiveScene ().name == "Upgrades") {
-			// Nothing so far
+		// Update the MoneyMaker themselves
+		for (int i = 0; i < moneyMakers.transform.childCount; i++) {
+			updateMoneyMakerUI (i);
 		}
-
-
 	}
 
 	void updateStatsUI(){
@@ -134,31 +122,6 @@ public class GameController : MonoBehaviour {
 		// Production value
 		Text production = moneyMaker.transform.GetChild(3).GetComponent<Text> ();
 		production.text = dataController.getMoneyMakerProduction (id).ToString () + " /c";
-	}
-
-	void setupUpgrades(){
-		for (int i = 0; i < upgrades.transform.childCount; i++) {
-			updateUpgrade (i);
-		}
-	}
-
-	void updateUpgrade(int id){
-		GameObject upgrade = upgrades.transform.GetChild (id).gameObject;
-
-		Text upgradeTitle = upgrade.transform.GetChild (1).GetComponent<Text> ();
-		upgradeTitle.text = dataController.getUpgradeName (id);
-
-		Text upgradeDescription = upgrade.transform.GetChild (2).GetComponent<Text> ();
-		upgradeDescription.text = dataController.getUpgradeDescription (id);
-
-		// Cost in Button
-		if (dataController.getUpgradeBought (id) == 1) {
-			Text upgradeCost = upgrade.transform.GetChild(3).GetChild(0).GetComponent<Text>();
-			upgradeCost.text = "BOUGHT";
-		} else {
-			Text upgradeCost = upgrade.transform.GetChild(3).GetChild(0).GetComponent<Text>();
-			upgradeCost.text = new SciNum(dataController.getUpgradeCost (id)).getNum();
-		}	 
 	}
 
 	// Buy/Sell

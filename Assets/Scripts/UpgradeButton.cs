@@ -14,9 +14,16 @@ public class UpgradeButton : MonoBehaviour {
 
 	// Dep
 	GameController gameController;
+	UpgradeController upgradeController;
 
 	void Awake(){
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		GameObject gc = GameObject.FindGameObjectWithTag ("GameController");
+		if (gc != null)
+			gameController = gc.GetComponent<GameController> ();
+
+		GameObject uc = GameObject.FindGameObjectWithTag ("UpgradeController");
+		if (uc != null)
+			upgradeController = uc.GetComponent<UpgradeController> ();
 	}
 
 	// Use this for initialization
@@ -31,12 +38,25 @@ public class UpgradeButton : MonoBehaviour {
 	}
 
 	void attemptBuy(){
-		bool res = gameController.attemptBuy (id);
-		if (res) {
-			// Redraw
-			gameController.updateUI (id);
-		} else {
-			// Do nothing, it failed
+		// This is used for upgrades and clicker upgrades
+		if (id <= 5) {
+			bool res = gameController.attemptBuy (id);
+			if (res) {
+				// Redraw
+				gameController.updateUI (id);
+			} else {
+				// Do nothing, it failed
+			}
+		} else if (id <= 11) {
+			bool res = upgradeController.attemptBuy (id);
+			if (res) {
+				// Redraw
+				upgradeController.updateUI (id);
+			} else {
+				// Do nothing, it failed
+			}
 		}
+
+
 	}
 }

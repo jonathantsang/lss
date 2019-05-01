@@ -41,7 +41,7 @@ public class Upgrade {
 	public string name;
 
 	// Cost of upgrade
-	public long cost;
+	public long price;
 
 	// If the upgrade has been bought
 	public int bought;
@@ -51,7 +51,7 @@ public class Upgrade {
 
 	public Upgrade(){
 		name = "unamed";
-		cost = 1;
+		price = 1;
 		bought = 0;
 		description = "Description";
 	}
@@ -115,7 +115,6 @@ public class DataController : MonoBehaviour {
 			// initialize the upgrades
 			initializeUpgrades ();
 		}
-
 
 		if (miscStats == null) {
 			// Misc stats/achievements
@@ -190,22 +189,22 @@ public class DataController : MonoBehaviour {
 	void initializeUpgrades(){
 		// For now interns
 		upgrades[0].name = "Intern #1";
-		upgrades[0].cost = 10000;
+		upgrades[0].price = 10000;
 
 		upgrades[1].name = "Intern #2";
-		upgrades[1].cost = 100000;
+		upgrades[1].price = 100000;
 
 		upgrades[2].name = "Intern #3";
-		upgrades[2].cost = 10000000;
+		upgrades[2].price = 10000000;
 
 		upgrades[3].name = "Intern #4";
-		upgrades[3].cost = 1000000000;
+		upgrades[3].price = 1000000000;
 
 		upgrades[4].name = "Intern #5";
-		upgrades[4].cost = 100000000000;
+		upgrades[4].price = 100000000000;
 
 		upgrades[5].name = "Intern #6";
-		upgrades[5].cost = 100000000000000;
+		upgrades[5].price = 100000000000000;
 	}
 
 	// Load/Save
@@ -237,14 +236,24 @@ public class DataController : MonoBehaviour {
 				moneyMakers [0].level = 1;
 			}
 		}
-
+			
 		upgrades = new Upgrade[6];
-		// Upgrades load
-		if (us == null){
+		// Upgrades load from null means it is not available
+		if (us == null) {
 			for (int i = 0; i < 6; i++) {
 				upgrades [i] = new Upgrade ();
 			}
 			initializeUpgrades ();
+		} else {
+			print (us [0].bought);
+			print (us);
+			for (int i = 0; i < 6; i++) {
+				upgrades [i] = new Upgrade ();
+				upgrades [i].bought = us [i].bought;
+				upgrades [i].description = us [i].description;
+				upgrades [i].name = us [i].name;
+				upgrades [i].price = us [i].price;
+			}
 		}
 
 		miscStats = new long[10];
@@ -266,7 +275,6 @@ public class DataController : MonoBehaviour {
 		// 1 time/date
 		DateTime currentTime = System.DateTime.Now;
 		miscStats [1] = currentTime.ToFileTime ();
-		print (miscStats [1]);
 	}
 
 	// Public Operations on Money
@@ -342,8 +350,10 @@ public class DataController : MonoBehaviour {
 		return upgrades [i].name;
 	}
 
-	public long getUpgradeCost(int i){
-		return upgrades [i].cost;
+	public long getUpgradePrice(int i){
+		// i modulo since upgrades are more index but are length 6
+		i %= 6;
+		return upgrades [i].price;
 	}
 
 	public string getUpgradeDescription(int i){
@@ -362,6 +372,10 @@ public class DataController : MonoBehaviour {
 	// Public Setters
 	public void setMoneyMakerMutex(int i, bool value){
 		moneyMakers [i].mutex = value;
+	}
+
+	public void setUpgradeBought(int i){
+		upgrades [i].bought = 1;
 	}
 
 	public void increaseTotalClicks(){

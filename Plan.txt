@@ -33,13 +33,16 @@ April 15:
 April 16:
 - timestamp used in last time arrived message
 
-April 17:
+
+next:
+- save/load time calculations, timestamp on last played
 - icons for money makers, names
 - interns (auto run) -> mutex run
+- separate gamecontrollers on each page for loading
+- make game extended life
 
 todo:
 - prestige system
-- save/load time calculations, timestamp on last played
 - difficulty
 - encrypt save
 - art

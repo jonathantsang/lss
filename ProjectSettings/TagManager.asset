@@ -10,6 +10,7 @@ TagManager:
   - Stats
   - Upgrades
   - Canvas
+  - UpgradeController
   layers:
   - Default
   - TransparentFX

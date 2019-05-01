@@ -10,6 +10,7 @@ features:
 - int to number scientific notation
 - saves
 - exclusives
+- fake ads
 
 money:
 - gather indie funds
@@ -29,11 +30,18 @@ minigames:
 - bl
 - nba2k
 - guithero
+- tetris
+- this is the only level flash game -> minigame centric achievements
+- punch out
+- black ops computer text typing
 
 addons:
 - dev chest
 - speedrun mode
+- mt1 references, casino etc.
 - prestiging: exclusives are prestige points onwards
+- black ops computer (numbers mason, bringiton)
+- tokens like gold tickets, chef tokens, etc. -> gamble (potato chips)
 
 upgrades:
 6 for now
@@ -44,10 +52,8 @@ real upgrades
 
 - memes -> image swap
 
-Description:
-- This is a timed exclusive for 6 months on Steam. Then this will be releasing on CD-roms in specially marked boxes of your favourite cereals. After that promotional period of two weeks and three days we will be in exclusive packs of chicken from select farms.
-
 achievements:
+- shovelw
 - thanks for not pirating this game (start up)
 - steam exclusive (let's get this bread)
 - first one is not free (to-play)
@@ -72,13 +78,22 @@ achievements:
 - give me deus ex
 - for the record
 - burger town
-- ah shit, here we go again
+- CJ Train
 - cheat (You cheated not only the game but yourself. You didn't grow. You didn't improve. You took a shortcut and gained nothing. You experienced a hollow victory. Nothing was risked and nothing was gained. It's sad that you don't know the difference of what true gamers are.)
 - microtransaction simulator 2
 - who watches the (watchmen?) = click the timer 1985 times
 - seize the memes of production (Is a man not entitled to the sweat of his brow?)
 - double platinum no features
-- Telling a Tale (RIP)
+- Telltail (RIP)
 - Exclusive (Sept 13)
 - Inclusive (April 13)
-- 
+- scott pilgrimy achievement
+- Seven deadly Xs (One of us went to Xavier's School for gifted youngsters, and one didn't)
+- infinite sadness
+- Double Platinum (No more chicken sandwiches, yes I'll pay for the damages)
+- sql inject computer
+- dead man's hand (buy an upgrade that causes you to get $0, minimum $1000)
+- quit while ahead (win 5 in a row and cash out)
+- blow a 3-1 lead (win 3-1 in any order, then lose the next 4 in a row)
+- get swept (lose 4 in a row)
+- Tank on purpose (lose on purpose)

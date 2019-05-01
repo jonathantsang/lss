@@ -8,7 +8,6 @@ public class SaveController : MonoBehaviour {
 
 	// Dep
 	DataController dataController;
-	GameController gameController;
 
 	float counter = 0;
 	float limit = 2.5f;
@@ -23,7 +22,6 @@ public class SaveController : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 
 		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		//SU = GameObject.FindGameObjectWithTag ("ShopUnlocked").GetComponent<ShopUnlocked> ();
 		Load ();
 	}
@@ -76,6 +74,6 @@ public class SaveController : MonoBehaviour {
 
 		// Loads data
 		// print(loadedStats);
-		gameController.updateUI();
+		// gameController.updateUI();
 	}
 }
