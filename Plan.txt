@@ -33,13 +33,28 @@ April 15:
 April 16:
 - timestamp used in last time arrived message
 
+May 6:
+- replan out tasks for the game
+- upgrades are not interns, but mts style
 
 next:
+- wheel of rigged odds or slots
+
+
+- multiple saves back up
 - save/load time calculations, timestamp on last played
 - icons for money makers, names
 - interns (auto run) -> mutex run
-- separate gamecontrollers on each page for loading
-- make game extended life
+
+upgrades:
+- the prestige (illusion)
+- vorkuta (black ops computer)
+- casino: roulette, slots, lootbox gambling, horse racing
+- This is an achievement
+- psychic (rocket league or ball something tony hawk)
+- leviathan (tetris?)
+
+
 
 todo:
 - prestige system

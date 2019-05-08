@@ -10,7 +10,11 @@ features:
 - int to number scientific notation
 - saves
 - exclusives
-- fake ads
+
+side games:
+- casino
+- horse racing
+- upgrades
 
 money:
 - gather indie funds
@@ -33,6 +37,8 @@ minigames:
 - tetris
 - this is the only level flash game -> minigame centric achievements
 - punch out
+
+planned:
 - black ops computer text typing
 
 addons:
@@ -97,3 +103,4 @@ achievements:
 - blow a 3-1 lead (win 3-1 in any order, then lose the next 4 in a row)
 - get swept (lose 4 in a row)
 - Tank on purpose (lose on purpose)
+- bortnite (I'm a ninja)

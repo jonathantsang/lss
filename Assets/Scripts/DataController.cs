@@ -187,23 +187,24 @@ public class DataController : MonoBehaviour {
 	}
 
 	void initializeUpgrades(){
-		// For now interns
-		upgrades[0].name = "Intern #1";
+		// Custom upgrades
+		upgrades[0].name = "The Prestige";
 		upgrades[0].price = 10000;
 
-		upgrades[1].name = "Intern #2";
+		upgrades[1].name = "Vorkuta";
 		upgrades[1].price = 100000;
 
-		upgrades[2].name = "Intern #3";
+		upgrades[2].name = "Casino Royale";
 		upgrades[2].price = 10000000;
 
-		upgrades[3].name = "Intern #4";
+		upgrades[3].name = "This is an";
+		upgrades[3].description = "achievement";
 		upgrades[3].price = 1000000000;
 
-		upgrades[4].name = "Intern #5";
+		upgrades[4].name = "Psychix Games";
 		upgrades[4].price = 100000000000;
 
-		upgrades[5].name = "Intern #6";
+		upgrades[5].name = "Leviathan";
 		upgrades[5].price = 100000000000000;
 	}
 
@@ -243,10 +244,7 @@ public class DataController : MonoBehaviour {
 			for (int i = 0; i < 6; i++) {
 				upgrades [i] = new Upgrade ();
 			}
-			initializeUpgrades ();
 		} else {
-			print (us [0].bought);
-			print (us);
 			for (int i = 0; i < 6; i++) {
 				upgrades [i] = new Upgrade ();
 				upgrades [i].bought = us [i].bought;
@@ -255,6 +253,7 @@ public class DataController : MonoBehaviour {
 				upgrades [i].price = us [i].price;
 			}
 		}
+		initializeUpgrades ();
 
 		miscStats = new long[10];
 		// Misc Stats load (FOR NOW)
