@@ -15,13 +15,19 @@ public class ConsolidateController : MonoBehaviour {
 		dataController = GameObject.FindGameObjectWithTag ("DataController").GetComponent<DataController> ();
 
 		updateStatsUI ();
-
 		setupConsolidateText ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	long totalMoneyToExclusives(long amt){
+		// After 1 million every 100,000 is an exclusive
+		// y = 239 * sqrt(amt/ 10^15)
+		long exclusives = (long) Mathf.Round(239 * Mathf.Sqrt(amt / Mathf.Pow(10, 15)));
+		return exclusives;
 	}
 
 	void updateStatsUI(){
@@ -31,7 +37,7 @@ public class ConsolidateController : MonoBehaviour {
 		}
 		Text money = stats.transform.GetChild(0).GetComponent<Text>();
 
-		SciNum sn = new SciNum(dataController.getTotalMoney ());
+		SciNum sn = new SciNum(dataController.getMoney ());
 		money.text = "$ " + sn.getNum ();
 	}
 
@@ -42,7 +48,7 @@ public class ConsolidateController : MonoBehaviour {
 		// Gain
 		Text Gain = consolidateTextTransform.GetChild(1).GetComponent<Text>();
 
-		Gain.text = "You will gain: " + "WORK IN PROGRESS";
+		Gain.text = "You will gain: " + totalMoneyToExclusives (dataController.getTotalMoney ()).ToString ();
 
 		// Total
 		Text Total = consolidateTextTransform.GetChild(2).GetComponent<Text>();

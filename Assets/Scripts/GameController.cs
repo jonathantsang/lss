@@ -73,7 +73,7 @@ public class GameController : MonoBehaviour {
 		}
 		Text money = stats.transform.GetChild(0).GetComponent<Text>();
 
-		SciNum sn = new SciNum(dataController.getTotalMoney ());
+		SciNum sn = new SciNum(dataController.getMoney ());
 		money.text = "$ " + sn.getNum ();
 	}
 
@@ -128,7 +128,7 @@ public class GameController : MonoBehaviour {
 	public bool attemptBuy(int id){
 		if (id <= 5) {
 			// money maker click upgrade
-			if (dataController.getMoneyMakerPrice (id) > dataController.getTotalMoney ()) {
+			if (dataController.getMoneyMakerPrice (id) > dataController.getMoney ()) {
 				// Invalid
 				return false;
 			} else {

@@ -45,7 +45,7 @@ public class UpgradeController : MonoBehaviour {
 		}
 		Text money = stats.transform.GetChild(0).GetComponent<Text>();
 
-		SciNum sn = new SciNum(dataController.getTotalMoney ());
+		SciNum sn = new SciNum(dataController.getMoney ());
 		money.text = "$ " + sn.getNum ();
 	}
 
@@ -79,7 +79,7 @@ public class UpgradeController : MonoBehaviour {
 	public bool attemptBuy(int id){
 		if (id <= 11) {
 			// Upgrade
-			if (dataController.getUpgradePrice(id) > dataController.getTotalMoney ()) {
+			if (dataController.getUpgradePrice(id) > dataController.getMoney ()) {
 				// Invalid
 				return false;
 			} else if (dataController.getUpgradeBought(id) == 0) {

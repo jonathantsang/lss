@@ -57,7 +57,7 @@ public class SaveController : MonoBehaviour {
 		*/
 		if (dataController != null) {
 			print ("saving");
-			SaveLoadManager.SaveData (dataController.getTotalMoney (), dataController.getMoneyMakers (), dataController.getUpgrades (), dataController.getMiscStats ());
+			SaveLoadManager.SaveData (dataController.getMoney (), dataController.getMoneyMakers (), dataController.getUpgrades (), dataController.getMiscStats ());
 		}
 
 	}

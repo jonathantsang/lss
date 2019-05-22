@@ -74,12 +74,17 @@ public class DataController : MonoBehaviour {
 	// Misc stats
 	long[] miscStats;
 	// [0] total taps
-	// [1] time date stamp 
+	// [1] time date stamp
+	// [2] exclusives count
+	// [3] exclusives worth
+	// [4] total cash
 
 	// Exclusives
 	int exclusivesCountIndex = 2;
 	// Their worth also
 	int exclusivesWorthIndex = 3;
+	// Total Money earned this lifetime
+	int totalMoneyIndex = 0;
 
 	void Awake(){
 		//Check if instance already exists
@@ -125,7 +130,11 @@ public class DataController : MonoBehaviour {
 			miscStats = new long[10];
 			miscStats [0] = 0;
 			miscStats [1] = System.DateTime.Now.ToFileTime ();
+			// Exclusives
 			miscStats [2] = 0;
+			miscStats [3] = 0;
+			// Total Money (Used in exclusives calculations
+			miscStats[totalMoneyIndex] = 0;
 		}
 	}
 
@@ -289,6 +298,7 @@ public class DataController : MonoBehaviour {
 	// Public Operations on Money
 	public void increaseMoney(long amount){
 		money += amount;
+		miscStats [totalMoneyIndex] += amount;
 	}
 
 	public void decreaseMoney(long amount){
@@ -317,11 +327,11 @@ public class DataController : MonoBehaviour {
 		return miscStats;
 	}
 
-	public long getTotalClicks(){
+	public long getClicks(){
 		return miscStats [0];
 	}
 
-	public long getTotalMoney(){
+	public long getMoney(){
 		return money;
 	}
 
@@ -394,6 +404,11 @@ public class DataController : MonoBehaviour {
 	// Since they are longs, to get fractional amounts we divide by 1000 and get the float percentage
 	public void setExclusivesWorth(long amt){
 		miscStats [exclusivesWorthIndex] = amt;
+	}
+
+	// Total Money
+	public long getTotalMoney(){
+		return miscStats [totalMoneyIndex];
 	}
 
 	// Public Setters
