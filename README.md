@@ -41,6 +41,9 @@ minigames:
 planned:
 - black ops computer text typing
 
+ideas:
+- terminal for cheats?
+
 addons:
 - dev chest
 - speedrun mode
@@ -104,3 +107,6 @@ achievements:
 - get swept (lose 4 in a row)
 - Tank on purpose (lose on purpose)
 - bortnite (I'm a ninja)
+- BRINGITON
+- play the entire game in tank controls
+- sellout

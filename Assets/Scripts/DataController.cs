@@ -77,8 +77,9 @@ public class DataController : MonoBehaviour {
 	// [1] time date stamp 
 
 	// Exclusives
-	long exclusives;
-	int exclusivesWorth; // upgraded later
+	int exclusivesCountIndex = 2;
+	// Their worth also
+	int exclusivesWorthIndex = 3;
 
 	void Awake(){
 		//Check if instance already exists
@@ -120,8 +121,11 @@ public class DataController : MonoBehaviour {
 			// Misc stats/achievements
 			// 0 total clicks
 			// 1 time
+			// 2 exclusives
 			miscStats = new long[10];
+			miscStats [0] = 0;
 			miscStats [1] = System.DateTime.Now.ToFileTime ();
+			miscStats [2] = 0;
 		}
 	}
 
@@ -262,12 +266,18 @@ public class DataController : MonoBehaviour {
 				miscStats [i] = 0;
 			}
 		} else {
+			// 0
+			miscStats[0] = ms[0];
+
+			// 1
 			DateTime res = System.DateTime.FromFileTime (ms [1]);
-			/*print ("Previous time was " + res.ToFileTime());
+			print ("Previous time was " + res.ToFileTime());
 			print ("Now it is " + System.DateTime.Now.ToFileTime ());
 			print ("Before: " + res.ToLongDateString ());
 			print ("Now: " + System.DateTime.Now.ToLongDateString ());
-			*/
+
+			// 2 exclusives
+			miscStats[2] = ms[2];
 		}
 
 
@@ -366,6 +376,24 @@ public class DataController : MonoBehaviour {
 	// MiscStats
 	public long getMiscStat(int i){
 		return miscStats [i];
+	}
+
+	// Exclusives are 2, unless we change it later on
+	public long getExclusivesCount(){
+		return miscStats [exclusivesCountIndex];
+	}
+
+	public long getExclusivesWorth(){
+		return miscStats [exclusivesWorthIndex];
+	}
+
+	public void setExclusivesCount(long amt){
+		miscStats [exclusivesCountIndex] = amt;
+	}
+
+	// Since they are longs, to get fractional amounts we divide by 1000 and get the float percentage
+	public void setExclusivesWorth(long amt){
+		miscStats [exclusivesWorthIndex] = amt;
 	}
 
 	// Public Setters

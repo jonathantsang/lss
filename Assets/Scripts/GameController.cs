@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour {
 		window.transform.GetChild (0).GetComponent<Text> ().text = "You earned $1 after waiting " + diff.ToString ();
 
 		GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
-		window.transform.parent = canvas.transform;
+		window.transform.SetParent (canvas.transform);
 		// Not sure why scale goes to != 1
 		window.transform.localScale = new Vector3(1,1,1);
 	}

@@ -26,3 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HorseRacing.unity
     guid: 01336463d15e94a7898ca691600286c5
+  - enabled: 1
+    path: Assets/Scenes/Consolidate.unity
+    guid: ae568ba7980d14a2796e1a58d23dc004

@@ -37,28 +37,38 @@ May 6:
 - replan out tasks for the game
 - upgrades are not interns, but mts style
 
+May 18:
+- boil down essence of simple but polished concepts to build
+
+May 21:
+- prestige/consolidate
+
 next:
+- prestige system
+- difficulty
+- multiple saves back up
+- upgrades
+- play my own game
+
 - wheel of rigged odds or slots
 
 
-- multiple saves back up
-- save/load time calculations, timestamp on last played
+- save/load time calculations, timestamp on last played (pay tax on idling)
 - icons for money makers, names
-- interns (auto run) -> mutex run
 
 upgrades:
 - the prestige (illusion)
 - vorkuta (black ops computer)
 - casino: roulette, slots, lootbox gambling, horse racing
-- This is an achievement
+- speedrun PB (there is only one level)
 - psychic (rocket league or ball something tony hawk)
 - leviathan (tetris?)
 
-
+$10 coupon on epic mega sale
 
 todo:
-- prestige system
-- difficulty
 - encrypt save
 - art
+- quests?
+- interns (auto run) -> mutex run
 - steamworks -> setup, ach, saves, etc.
