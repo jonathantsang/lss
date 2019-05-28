@@ -42,10 +42,18 @@ May 18:
 
 May 21:
 - prestige/consolidate
+- side games AFTER core content
+
+May 22:
+- prestige/clicker upgrade scaling
+
+May 27:
+- finish prestige
+- new game plus (unknown, cranked up settings)
+- difficulty (new game plus or something)
+
 
 next:
-- prestige system
-- difficulty
 - multiple saves back up
 - upgrades
 - play my own game
@@ -71,4 +79,5 @@ todo:
 - art
 - quests?
 - interns (auto run) -> mutex run
+- multiplayer?
 - steamworks -> setup, ach, saves, etc.

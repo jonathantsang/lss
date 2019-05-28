@@ -26,6 +26,8 @@ public class ConsolidateController : MonoBehaviour {
 	long totalMoneyToExclusives(long amt){
 		// After 1 million every 100,000 is an exclusive
 		// y = 239 * sqrt(amt/ 10^15)
+		return amt / 2;
+
 		long exclusives = (long) Mathf.Round(239 * Mathf.Sqrt(amt / Mathf.Pow(10, 15)));
 		return exclusives;
 	}

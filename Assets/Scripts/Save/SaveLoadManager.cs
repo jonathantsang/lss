@@ -41,6 +41,7 @@ public class SaveData {
 	public MoneyMaker[] moneyMakers;
 	public Upgrade[] upgrades;
 	public long[] miscStats;
+
 	/*
 	public int NumberOpened = 0; // How many crates opened
 	public int Currency = 10; // How much currency they have

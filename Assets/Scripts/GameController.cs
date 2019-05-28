@@ -29,17 +29,10 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		print ("start gc");
 
-		// create popup about idle
-		GameObject window = Instantiate(closeableWindow, new Vector3(0,0,0), Quaternion.identity);
-		System.DateTime res = System.DateTime.FromFileTime (dataController.getMiscStat(1));
-		System.DateTime now = System.DateTime.Now;
-		System.TimeSpan diff = now.Subtract(res);
-		window.transform.GetChild (0).GetComponent<Text> ().text = "You earned $1 after waiting " + diff.ToString ();
+		// Wait for load of inventory?
 
-		GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
-		window.transform.SetParent (canvas.transform);
-		// Not sure why scale goes to != 1
-		window.transform.localScale = new Vector3(1,1,1);
+		// create popup about idle
+		// createPopUp();
 	}
 	
 	// Update is called once per frame
@@ -121,7 +114,7 @@ public class GameController : MonoBehaviour {
 
 		// Production value
 		Text production = moneyMaker.transform.GetChild(3).GetComponent<Text> ();
-		production.text = dataController.getMoneyMakerProduction (id).ToString () + " /c";
+		production.text = dataController.getMoneyMakerProduction (id).ToString ();
 	}
 
 	// Buy/Sell
@@ -142,5 +135,27 @@ public class GameController : MonoBehaviour {
 
 		}
 		return false;
+	}
+
+	// Idle PopUp
+	public void createPopUp(){
+		GameObject window = Instantiate(closeableWindow, new Vector3(0,0,0), Quaternion.identity);
+		// TODO Fix index not uniform
+		long res = new DateTime(dataController.getTimeQuit()).ToFileTime();
+		long now = System.DateTime.Now.ToFileTime ();
+
+		System.TimeSpan diff = new TimeSpan (now - res);
+
+		string timeFormatted = String.Format ("{0}:{1}:{2}", 
+								   diff.Hours, 
+			                       diff.Minutes,
+			                       diff.Seconds);
+
+		window.transform.GetChild (0).GetComponent<Text> ().text = "You earned $1 after waiting " + timeFormatted;
+
+		GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
+		window.transform.SetParent (canvas.transform);
+		// Not sure why scale goes to != 1
+		window.transform.localScale = new Vector3(1,1,1);
 	}
 }

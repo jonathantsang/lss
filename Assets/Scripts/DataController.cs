@@ -57,6 +57,13 @@ public class Upgrade {
 	}
 }
 
+public enum miscStatsIndices {
+	TOTALCLICKS =  0,
+	TIMEQUIT = 1,
+	TOTALEXCLUSIVES = 2,
+	EXCLUSIVESWORTH = 3
+}
+
 public class DataController : MonoBehaviour {
 
 	// Singleton
@@ -74,15 +81,22 @@ public class DataController : MonoBehaviour {
 	// Misc stats
 	long[] miscStats;
 	// [0] total taps
-	// [1] time date stamp
+	// [1] time date stamp of last played (used in the calculation when you come back)
 	// [2] exclusives count
 	// [3] exclusives worth
 	// [4] total cash
 
+	// Total Clicks
+	int totalClicksIndex = 4;
+
+	// Time Quit
+	int timeQuitIndex = 1;
+
 	// Exclusives
-	int exclusivesCountIndex = 2;
+	int totalExclusivesIndex = 2;
 	// Their worth also
 	int exclusivesWorthIndex = 3;
+
 	// Total Money earned this lifetime
 	int totalMoneyIndex = 0;
 
@@ -275,24 +289,39 @@ public class DataController : MonoBehaviour {
 				miscStats [i] = 0;
 			}
 		} else {
-			// 0
-			miscStats[0] = ms[0];
+			// 0 total quit
+			setTotalClicks(ms[totalClicksIndex]);
 
-			// 1
-			DateTime res = System.DateTime.FromFileTime (ms [1]);
+			// 1 time quit
+			DateTime res = System.DateTime.FromFileTime (ms [timeQuitIndex]);
 			print ("Previous time was " + res.ToFileTime());
 			print ("Now it is " + System.DateTime.Now.ToFileTime ());
-			print ("Before: " + res.ToLongDateString ());
-			print ("Now: " + System.DateTime.Now.ToLongDateString ());
+			setTimeQuit (res);
 
 			// 2 exclusives
-			miscStats[2] = ms[2];
+			setExclusivesCount(ms[totalExclusivesIndex]);
+
+			// 3 exclusives worth
+			setExclusivesWorth(ms[exclusivesWorthIndex]);
 		}
 
+		// GC related things
 
-		// 1 time/date
+		// Pop up with date
+		GameController gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+		if (gc != null) {
+			gc.createPopUp ();
+		}
+
+		// Update time
 		DateTime currentTime = System.DateTime.Now;
 		miscStats [1] = currentTime.ToFileTime ();
+		print (currentTime);
+
+		// Force a reload of UI
+		if (gc != null) {
+			gc.updateUI ();
+		}
 	}
 
 	// Public Operations on Money
@@ -388,9 +417,22 @@ public class DataController : MonoBehaviour {
 		return miscStats [i];
 	}
 
+	// Total Clicks
+	public void setTotalClicks(long amt){
+		miscStats[totalClicksIndex] = amt;
+	}
+
+	public long getTimeQuit(){
+		return miscStats[timeQuitIndex];
+	}
+
+	public void setTimeQuit(DateTime time){
+		miscStats [timeQuitIndex] = time.Ticks;
+	}
+
 	// Exclusives are 2, unless we change it later on
 	public long getExclusivesCount(){
-		return miscStats [exclusivesCountIndex];
+		return miscStats [totalExclusivesIndex];
 	}
 
 	public long getExclusivesWorth(){
@@ -398,7 +440,7 @@ public class DataController : MonoBehaviour {
 	}
 
 	public void setExclusivesCount(long amt){
-		miscStats [exclusivesCountIndex] = amt;
+		miscStats [totalExclusivesIndex] = amt;
 	}
 
 	// Since they are longs, to get fractional amounts we divide by 1000 and get the float percentage
@@ -421,6 +463,6 @@ public class DataController : MonoBehaviour {
 	}
 
 	public void increaseTotalClicks(){
-		miscStats [0]++;
+		miscStats [totalClicksIndex]++;
 	}
 }
