@@ -63,13 +63,17 @@ public class ProgressBar : MonoBehaviour {
 	IEnumerator loadProgressBar(){
 		// Assume from scale 0 to scale 1, small increments based on datacontroller money maker production time
 		int waitTime = dataController.getMoneyMakerWaitTime(id);
-		float incrementPerFrame = (1.0f / (float)waitTime) / 60.0f;
-		int steps = 0;
-		while (greenBar.transform.localScale.x <= 1.0f) {
-			float val = (float) (greenBar.transform.localScale.x + incrementPerFrame);
+		float currentTime = 0.0f;
+
+		WaitForEndOfFrame yieldInstruction = new WaitForEndOfFrame();
+		float ticks = 60 * waitTime; // Still finnicky
+
+		for (float k = 0; k < ticks; k++) {
+			float val = k / ticks;
+
 			greenBar.transform.localScale = new Vector3(val, 1.0f, 1.0f);
-			yield return new WaitForSecondsRealtime(0.01f);
-			steps += 1;
+			yield return yieldInstruction;
+
 		}
 		// At the end reset the progress bar
 		greenBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);

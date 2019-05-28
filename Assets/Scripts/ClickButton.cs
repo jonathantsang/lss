@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class ClickButton : MonoBehaviour {
 
+	private readonly object atomicLock = new object();
+	bool busy = false;
+
 	// Used to call in the DataController, set by the GameController
 	public int id; // 0-5 value
 
@@ -36,8 +39,15 @@ public class ClickButton : MonoBehaviour {
 	void addMoney(){
 		// print ("addMoney");
 		// Need a lock mechanism so only one coroutine can be running at a time
-		// If it is already in use, we throw it out, (DO NOT spin)
-		if (dataController.getMoneyMakerMutex (id) == false) {
+		// RACE CONDITION
+		if (dataController.getMoneyMakerMutex (id) == false && busy == false) {
+			if (busy == true) {
+				throw new System.Exception("race condition");
+			}
+			lock (atomicLock) {
+				busy = true;
+			}
+
 			dataController.setMoneyMakerMutex (id, true);
 			dataController.increaseTotalClicks (); // +1
 			StartCoroutine (addDelayedMoney ());
@@ -54,11 +64,13 @@ public class ClickButton : MonoBehaviour {
 
 		yield return new WaitForSecondsRealtime(waitTime);
 		//yield return new WaitForSeconds(0);
-		dataController.setMoneyMakerMutex (id, false);
 
 		// The update UI delay seems awkward
 		dataController.increaseMoney (dataController.getMoneyMakerProduction (id));
 		// print ("added delayed money");
 		gameController.updateUI ();
+		dataController.setMoneyMakerMutex (id, false);
+
+		busy = false; // Allow next barger
 	}
 }

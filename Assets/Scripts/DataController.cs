@@ -177,7 +177,7 @@ public class DataController : MonoBehaviour {
 		moneyMakers [1].production = 10;
 		moneyMakers [1].priceScale = 1.1f;
 		moneyMakers [1].productionScale = 1.1f;
-		moneyMakers [1].waitTime = 5;
+		moneyMakers [1].waitTime = 10;
 		moneyMakers [1].mutex = false;
 
 		moneyMakers [2].level = 0;
@@ -185,7 +185,7 @@ public class DataController : MonoBehaviour {
 		moneyMakers [2].production = 100;
 		moneyMakers [2].priceScale = 1.1f;
 		moneyMakers [2].productionScale = 1.1f;
-		moneyMakers [2].waitTime = 5;
+		moneyMakers [2].waitTime = 20;
 		moneyMakers [2].mutex = false;
 
 		moneyMakers [3].level = 0;
@@ -193,7 +193,7 @@ public class DataController : MonoBehaviour {
 		moneyMakers [3].production = 1000;
 		moneyMakers [3].priceScale = 1.1f;
 		moneyMakers [3].productionScale = 1.1f;
-		moneyMakers [3].waitTime = 5;
+		moneyMakers [3].waitTime = 60;
 		moneyMakers [3].mutex = false;
 
 		moneyMakers [4].level = 0;
@@ -201,7 +201,7 @@ public class DataController : MonoBehaviour {
 		moneyMakers [4].production = 10000;
 		moneyMakers [4].priceScale = 1.1f;
 		moneyMakers [4].productionScale = 1.1f;
-		moneyMakers [4].waitTime = 5;
+		moneyMakers [4].waitTime = 300;
 		moneyMakers [4].mutex = false;
 
 		moneyMakers [5].level = 0;
@@ -209,7 +209,7 @@ public class DataController : MonoBehaviour {
 		moneyMakers [5].production = 100000;
 		moneyMakers [5].priceScale = 1.1f;
 		moneyMakers [5].productionScale = 1.1f;
-		moneyMakers [5].waitTime = 5;
+		moneyMakers [5].waitTime = 6000;
 		moneyMakers [5].mutex = false;
 	}
 
@@ -308,7 +308,11 @@ public class DataController : MonoBehaviour {
 		// GC related things
 
 		// Pop up with date
-		GameController gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+		GameObject gcObject = GameObject.FindGameObjectWithTag("GameController").gameObject;
+		GameController gc = null;
+		if(gcObject != null){
+			gc = gcObject.GetComponent<GameController>();
+		}
 		if (gc != null) {
 			gc.createPopUp ();
 		}
