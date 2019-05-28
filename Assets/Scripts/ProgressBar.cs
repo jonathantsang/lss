@@ -56,14 +56,12 @@ public class ProgressBar : MonoBehaviour {
 	}
 
 	public void animateProgressBar(){
-		StartCoroutine (loadProgressBar());
-		StartCoroutine (loadTimer ());
+		StartCoroutine (loadProgressAll ());
 	}
 
-	IEnumerator loadProgressBar(){
+	IEnumerator loadProgressAll(){
 		// Assume from scale 0 to scale 1, small increments based on datacontroller money maker production time
 		int waitTime = dataController.getMoneyMakerWaitTime(id);
-		float currentTime = 0.0f;
 
 		WaitForEndOfFrame yieldInstruction = new WaitForEndOfFrame();
 		float ticks = 60 * waitTime; // Still finnicky
@@ -72,25 +70,15 @@ public class ProgressBar : MonoBehaviour {
 			float val = k / ticks;
 
 			greenBar.transform.localScale = new Vector3(val, 1.0f, 1.0f);
+
+			string time = secondsToTimeFormat(waitTime - (int)k / 60);
+			timer.text = time;
+
 			yield return yieldInstruction;
 
 		}
-		// At the end reset the progress bar
-		greenBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
-	}
-
-	IEnumerator loadTimer(){
-		// Assume from scale 0 to scale 1, small increments based on datacontroller money maker production time
-		int waitTime = dataController.getMoneyMakerWaitTime(id);
-
-		while (waitTime >= 0) {
-			// Convert waitTime in seconds to 00:00:00 -> HH:MM:SS format
-			string time = secondsToTimeFormat(waitTime);
-			waitTime -= 1;
-			timer.text = time;
-			yield return new WaitForSecondsRealtime(1.0f);
-		}
 		// At the end put back to default
+		greenBar.transform.localScale = new Vector3(0.0f, 1.0f, 1.0f);
 		timer.text = secondsToTimeFormat(dataController.getMoneyMakerWaitTime(id));
 	}
 }
