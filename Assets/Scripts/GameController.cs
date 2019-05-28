@@ -146,7 +146,7 @@ public class GameController : MonoBehaviour {
 
 		System.TimeSpan diff = new TimeSpan (now - res);
 
-		string timeFormatted = String.Format ("{0}:{1}:{2}", 
+		string timeFormatted = String.Format ("{0:00}:{1:00}:{2:00}", 
 								   diff.Hours, 
 			                       diff.Minutes,
 			                       diff.Seconds);
